@@ -1,0 +1,290 @@
+[
+  {
+    "case_id": "T01",
+    "source_records": {
+      "Ebac2690c": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 77,
+        "event_id": "9ccdd481-2342-43d6-8bf6-f3ba9c07cffa",
+        "raw_sha256": "c67288b7e9f6f72f1a9332b9af4efeb78e28af8b233e9521f8c535d16a1c5514"
+      }
+    }
+  },
+  {
+    "case_id": "T02",
+    "source_records": {
+      "Ed1454bfb": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 67,
+        "event_id": "d6a25b51-6b8a-4400-a898-f6ad62194d0b",
+        "raw_sha256": "3eca829cbe3b2a872b2e9a00639c04054f18f6b4f3cbc6f55e99f887774c35fb"
+      }
+    }
+  },
+  {
+    "case_id": "T03",
+    "source_records": {
+      "E3d4659ce": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 11,
+        "event_id": "61936240-0d8b-49b3-b53b-8a0a9007b1c0",
+        "raw_sha256": "aed3fc3f7fb260aa5f9f3f28903c3dbdf65c35f4a263fa09557bda6f2bd965da"
+      }
+    }
+  },
+  {
+    "case_id": "T04",
+    "source_records": {
+      "E25927630": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 87,
+        "event_id": "a4b4e777-d882-4dca-929d-3ccc413111e5",
+        "raw_sha256": "1c752f0ad271b7ded1ca7472a2fa0e4aaf84ed3c495a23d10bcc6bc1d0fcbedf"
+      }
+    }
+  },
+  {
+    "case_id": "T05",
+    "source_records": {
+      "Eb2fc3866": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 96,
+        "event_id": "4c441de4-d5dc-470d-ad5f-3cded8e7a849",
+        "raw_sha256": "68ee0ad6054408df239341fdaaad3e731bb521f22911979d77051b2f19b99e36"
+      }
+    }
+  },
+  {
+    "case_id": "T06",
+    "source_records": {
+      "Ede22cf64": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 99,
+        "event_id": "2b7231c2-892d-464e-8880-1e4f81ae7eb2",
+        "raw_sha256": "730264c30c27f54d357b1482c7c4143930edf964e3de2e829b7e2840dc75cf84"
+      }
+    }
+  },
+  {
+    "case_id": "T07",
+    "source_records": {
+      "E7b9d0d61": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 42,
+        "event_id": "39423b70-a6c1-4c4a-a780-96d34e85c72c",
+        "raw_sha256": "a690c8828d8060f1feada3aa4628733413f41ae64eea32102d1a3afbc3728699"
+      }
+    }
+  },
+  {
+    "case_id": "T08",
+    "source_records": {
+      "Ea4ea1243": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 85,
+        "event_id": "2cd21d3d-09e7-4858-8f81-a8283dea5015",
+        "raw_sha256": "d013a62c8b371857264712833c8fdc2c2eed9d0c76c5cd31000e408bd2441209"
+      }
+    }
+  },
+  {
+    "case_id": "T09",
+    "source_records": {
+      "E06b532a0": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 6,
+        "event_id": "dd93a49e-24c7-4303-bdb0-8d756e5c1f47",
+        "raw_sha256": "eb788ca499f3f0174da37b30360c5a6deee28e4e829fad087d56d2930a352a88"
+      }
+    }
+  },
+  {
+    "case_id": "T10",
+    "source_records": {
+      "Ef3d1e644": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 81,
+        "event_id": "682d4719-664b-4a84-9616-400b319a9796",
+        "raw_sha256": "0c4b0432e802c3ebf5dc91d0494d1705560bbe2cd779152203f1fe8872155068"
+      }
+    }
+  },
+  {
+    "case_id": "T11",
+    "source_records": {
+      "E9b2f99ce": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 92,
+        "event_id": "d3e977fe-2358-4cad-a3ec-a5d7ecbf8fdd",
+        "raw_sha256": "4f5e84ba519dcbd21a26de0e0a0e7b32cedbe0bb505e5fc26c24c0fb3fe2a1b5"
+      }
+    }
+  },
+  {
+    "case_id": "T12",
+    "source_records": {
+      "Eebd8394b": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 26,
+        "event_id": "cc0ecf07-55ef-4ae8-983d-baeb552f4249",
+        "raw_sha256": "1b383fbf1dcf7f09ea80ac6345c4139da41557b3e5b6fae1670bcecacbd3da00"
+      }
+    }
+  },
+  {
+    "case_id": "T13",
+    "source_records": {
+      "Ec01284dd": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 65,
+        "event_id": "e38eb6eb-c819-4be3-b184-b5b3969413fe",
+        "raw_sha256": "fffb8fa48a0a9f3d846212009982eebca131d313eb73df8d5e450379087784ee"
+      }
+    }
+  },
+  {
+    "case_id": "T14",
+    "source_records": {
+      "E883c1a45": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 36,
+        "event_id": "4342e1b9-0c35-4283-bedb-58ee59c52854",
+        "raw_sha256": "393bc435e23ee86ef04b80a98c382044dd55d7fa71148a253083cc47a38702b7"
+      }
+    }
+  },
+  {
+    "case_id": "T15",
+    "source_records": {
+      "Ecc9ac13c": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 93,
+        "event_id": "a1cf020c-0d15-4bfc-9dbd-6828ef0b58e1",
+        "raw_sha256": "c7db0e9e37177f10b03dfb8ef50ddf61685e8797f34c98cc852874d35a24d436"
+      }
+    }
+  },
+  {
+    "case_id": "T16",
+    "source_records": {
+      "E166aeaaa": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 62,
+        "event_id": "d2691e3f-fdac-49f8-b49f-6ef07515d623",
+        "raw_sha256": "db8b1e21093f310e08c46d31f82f170f8b9e79f1dec104c9654962633ca6f163"
+      }
+    }
+  },
+  {
+    "case_id": "T17",
+    "source_records": {
+      "E6d53b33c": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 0,
+        "event_id": "806e0fbd-756b-412a-933b-01839be21e95",
+        "raw_sha256": "e6f9d46d2dbee70fafe9c5b1809723eb980e59b1c29ae9689b095666c86fd399"
+      }
+    }
+  },
+  {
+    "case_id": "T18",
+    "source_records": {
+      "E44085781": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 51,
+        "event_id": "02e701b4-c10d-430a-887a-a7f856ed5173",
+        "raw_sha256": "6916eefafa38b18ad8062dddc062458a59df888af1185fb598ae3b8cd210b803"
+      }
+    }
+  },
+  {
+    "case_id": "T19",
+    "source_records": {
+      "E665d0c1d": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 25,
+        "event_id": "c4a14edc-9045-451d-be5f-7389bc444bb7",
+        "raw_sha256": "14ac684a47c87575752e48cc57bd34fc8a6b7e54f89140899b32ac2765189a4a"
+      }
+    }
+  },
+  {
+    "case_id": "T20",
+    "source_records": {
+      "Ea4b1cdbb": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 97,
+        "event_id": "e6bee185-c5d8-479d-8477-f37871f1d886",
+        "raw_sha256": "8d01f53dc7a6197b8784aad84f0694d9ff5ebc442975d302f4dcbe69d32d6a23"
+      }
+    }
+  },
+  {
+    "case_id": "T21",
+    "source_records": {
+      "E19f6e7f1": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 79,
+        "event_id": "797d25b5-bb05-4db0-81e1-8dcf0e38e1f6",
+        "raw_sha256": "97f96a5bb9ab5ace95066ad18cdafcba68bde91c7b566cbec062027c80561bcf"
+      }
+    }
+  },
+  {
+    "case_id": "T22",
+    "source_records": {
+      "Edef21970": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 54,
+        "event_id": "e4af7398-4954-4e65-9913-af8a994cfc31",
+        "raw_sha256": "f295fba366b47ad48c4bc7e6a67df6465b70cc2296052d99ae9689da451228c2"
+      }
+    }
+  },
+  {
+    "case_id": "T23",
+    "source_records": {
+      "E6cbc7339": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 72,
+        "event_id": "2032187e-37da-416d-bde3-01a82f1e0599",
+        "raw_sha256": "8038efbd161ca0eb1985956521fa2611bbd0166e1c191a91d3246c6872c81ab9"
+      }
+    }
+  },
+  {
+    "case_id": "T24",
+    "source_records": {
+      "E6b73e4d4": {
+        "publisher": "Splunk",
+        "file": "splunk--attack_data-datasets__attack_techniques__T1530__aws_exfil_high_no_getobject__cloudtrail.json",
+        "index": 28,
+        "event_id": "e74e1053-6cf1-4d74-ad3f-a16e75152070",
+        "raw_sha256": "cf4d8e6bae5f10328d51a521aa583849cae5e44ba7663d77310fb60af7a7783f"
+      }
+    }
+  }
+]
