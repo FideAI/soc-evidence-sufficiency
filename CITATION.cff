@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "Please cite this research companion and the exact version or commit used. This is a release candidate, not a claim of peer review."
+type: dataset
+title: "When an AI investigator fills in the missing evidence: research companion"
+authors:
+  - name: "Fide AI"
+    website: "https://fideai.org"
+version: "0.1.0-rc.1"
+url: "https://github.com/FideAI/soc-evidence-sufficiency"
+repository-code: "https://github.com/FideAI/soc-evidence-sufficiency"
+license:
+  - MIT
+  - CC-BY-4.0
+  - Apache-2.0
+keywords:
+  - cybersecurity
+  - evidence sufficiency
+  - AI investigation
+  - reproducibility
+abstract: >-
+  A controlled cloud-log evidence study comparing original and clarified
+  instructions and inspecting unsupported assertions about withheld fields.
+  The companion contains 996 categorical decision records and 306 exact
+  Splunk-based input/output replays. It supports retained-response analysis,
+  not a claim of fresh inference replication or operational defense efficacy.
+  License identifiers apply to different components as mapped in LICENSING.md.

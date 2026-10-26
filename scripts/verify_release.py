@@ -6,6 +6,16 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
+required = ["VERSION", "CITATION.cff", "DATA-DICTIONARY.md", "LICENSING.md",
+            "LICENSES/CC-BY-4.0.txt", "RELEASE.md", "CHANGELOG.md"]
+for name in required:
+    assert (ROOT / name).is_file(), name
+version = (ROOT / "VERSION").read_text().strip()
+assert re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+(?:-rc\.[0-9]+)?", version), version
+citation = (ROOT / "CITATION.cff").read_text()
+assert f'version: "{version}"' in citation
+assert version in (ROOT / "README.md").read_text()
+assert version in (ROOT / "CHANGELOG.md").read_text()
 provenance = json.loads((ROOT / "PACKAGE-PROVENANCE.json").read_text())
 expected = provenance["files"]
 actual = {str(p.relative_to(ROOT / "study")) for p in (ROOT / "study").rglob("*")

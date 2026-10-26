@@ -2,7 +2,7 @@
 
 **A real citation can accompany a claim about a field the model was never shown.** This Fide AI study tests that gap in controlled cloud-log reading tasks. It asks whether a model's conclusion is supported by the evidence available to it, rather than whether the hidden outcome happened to match its answer.
 
-**Release candidate.** Prepared for review; the website article remains unpublished. Repository availability does not imply independent human acceptance of the methods or conclusions.
+**Release candidate `0.1.0-rc.1`.** Prepared for review; the website article remains unpublished. Repository availability does not imply independent human acceptance of the methods or conclusions.
 
 Read the [accessible article](study/publication/INSIGHT.md), the [technical paper](study/publication/TECHNICAL-PAPER.md), or go straight to [the preserved model inputs and responses](study/data/splunk-replay.jsonl).
 
@@ -52,12 +52,18 @@ The 690 other source-dependent replays are excluded because redistribution has n
 - [study/](study/README.md): the preserved companion package, including manuscripts, evidence and scripts.
 - [PACKAGE-PROVENANCE.json](PACKAGE-PROVENANCE.json): the original archive fingerprint and all 21 extracted file hashes.
 - [MODEL-REPRODUCTION.md](study/MODEL-REPRODUCTION.md): exact model identities and limits of new inference.
+- [DATA-DICTIONARY.md](DATA-DICTIONARY.md): field definitions, joins, conditions and counting limits.
 - [CONTRIBUTING.md](CONTRIBUTING.md): how to report a discrepancy or propose a replication.
+- [RELEASE.md](RELEASE.md) and [CHANGELOG.md](CHANGELOG.md): version scope, validation and release status.
 
 The original package is preserved byte for byte under `study/`, including its candidate-status manifest. Repository setup and automation live outside that directory. No internal research workspace history, planning documents, private review notes or subsequent defense experiments are included.
 
-## Licensing
+## Licensing and citation
 
-Fide-authored code is MIT licensed. Splunk-derived material retains its Apache-2.0 terms. See [LICENSE](LICENSE) and [third-party notices](THIRD-PARTY-NOTICES.md); the code license does not grant rights in excluded upstream material. The manuscripts are available to read and scrutinize; no additional manuscript reuse license is assigned here.
+Fide-authored code uses [MIT](LICENSE). Fide-authored manuscripts, documentation, instructions and result data use [CC BY 4.0](LICENSES/CC-BY-4.0.txt). Splunk-derived material retains Apache-2.0 terms. [LICENSING.md](LICENSING.md) maps the components and exclusions; [third-party notices](THIRD-PARTY-NOTICES.md) preserve source attribution. The preserved package's historical license files remain unchanged.
 
-Research by [Fide AI](https://fideai.org). For citation, identify this repository and the exact commit you used rather than implying a formally published or peer-reviewed edition.
+Citation metadata is available in [CITATION.cff](CITATION.cff). Suggested citation:
+
+> Fide AI. (2026). *When an AI investigator fills in the missing evidence: research companion* (0.1.0-rc.1, release candidate). https://github.com/FideAI/soc-evidence-sufficiency
+
+Include the exact commit if you use a modified or untagged checkout. No DOI or peer-review status is claimed. Research by [Fide AI](https://fideai.org).
