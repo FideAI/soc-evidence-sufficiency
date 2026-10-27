@@ -1,6 +1,6 @@
 # When an AI investigator fills in the missing evidence
 
-**What should count as sufficient evidence for an AI investigator?** This companion supports Fide’s research perspective with controlled cloud-log experiments. In the tested setup, real citations accompanied claims about fields the model was never shown. The perspective argues for evaluating evidence support directly and invites collaboration on whether explicit checks improve investigative findings.
+**What should count as sufficient evidence for an AI investigator?** This companion supports Fide’s research perspective with controlled cloud-log experiments. In the main clarified Gemma comparison, correct outcome verdicts and real record citations accompanied assertions about error-field values the model was never shown. The perspective argues for evaluating evidence support directly and invites collaboration on whether explicit checks improve investigative findings.
 
 **Release candidate `0.1.0-rc.2`.** Prepared for review; the website article remains unpublished. Repository availability does not imply independent human acceptance of the methods or conclusions.
 

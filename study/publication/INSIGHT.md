@@ -1,6 +1,6 @@
 # When an AI investigator fills in the missing evidence
 
-Our experiments show how real citations can accompany unsupported conclusions. What should count as sufficient evidence for an AI investigator?
+An AI investigator can reach the right answer, cite a real record, and still lack evidence for its conclusion. Our experiments show why that distinction matters.
 
 A request for a file appeared in an AWS log. The service sent 277 bytes. Asked what happened, our local Qwen installation described a successful read.
 
@@ -8,11 +8,13 @@ The full record said otherwise. Its error field read `NoSuchKey`: the requested 
 
 We had deliberately withheld that error field from the model, and told it the field was unavailable. The right answer was to leave the outcome unresolved. Instead, the byte count became a reason to conclude.
 
-**An AI investigator should be evaluated on whether its evidence supports its conclusions. Getting the answer right and citing a real record are useful checks, but neither settles that question.**
+In that case, the answer was wrong. A more revealing problem appeared in our later test: a model reached the right answer, cited a real record, and described an error field we had explicitly withheld as though it had seen the value. Checking only the answer or whether the cited record existed would have missed the unsupported claim.
 
-We tested local installations of Gemma 4 E4B and Qwen 3.8 27B (4-bit) on constrained log-reading tasks. We clarified the instructions and checked their answers on new source records and a different layout. Gemma cited real records while describing the value of a field it was never shown. Clearer instructions helped, though the original labels also invited misinterpretation. In a small formatting check, the same facts received different answers.
+**AI investigators need to show that their evidence supports their findings. A correct answer and a real citation are not enough.**
 
-These experiments make the problem concrete. They do not tell us how common it is in deployed systems. We think they make a case for studying evidence support directly, and we want to work with the community on what that evaluation should require.
+At Fide, we made that distinction inspectable in a narrow security task. We gave local installations of Gemma 4 E4B and Qwen 3.8 27B (4-bit) different views of the same logs, withholding and restoring the fields needed to establish an outcome. Readers can compare the supplied records, exact instructions and retained responses, and judge whether the conclusions were warranted.
+
+This matters for autonomous defense because an investigative finding may become the basis for action. Our experiments do not establish how often this failure occurs in deployed systems or whether an additional review step would prevent it. They show why evidence support deserves its own test, alongside answer accuracy and citation validity.
 
 ## A number can make an answer feel earned
 
@@ -99,13 +101,15 @@ Those cases should come from independent captures. Whether better-supported find
 
 ## Help test what should count as evidence
 
-We welcome researchers and security practitioners who want to examine this work with us. The most useful contributions would be shareable investigation cases with clear evidence boundaries, replications on other systems, or comparisons of review methods that measure both unsupported claims and missed justified conclusions. Counterexamples matter: a workflow that handles these distinctions reliably would help identify what works.
+Fide’s contribution is a security example readers can inspect and an evaluation question they can test: does an investigator’s conclusion remain justified by the evidence it actually received? Withholding and restoring decisive fields lets us examine that question separately from whether the answer happens to match the hidden outcome or the citation names a real record.
 
-The accompanying technical note and limited companion provide the methods, retained responses and scoring needed to start. They also identify what cannot be reproduced from the export. You can challenge a reference judgment, trace a claim back to its input, or propose a test that would change our interpretation.
+The next step is to find out whether explicit evidence review improves findings in less structured investigations. We want to work with researchers and security practitioners on shareable cases, replications and comparisons that count both unsupported claims corrected and justified conclusions wrongly withdrawn. A method that handles our examples reliably—or a comparison in which ordinary review works just as well—would be a useful result.
+
+The technical note and limited companion provide the methods, retained responses and scoring needed to challenge our findings. They also identify what cannot be reproduced from the export. The broader aim is to connect what a defender observes, what it concludes, and what that conclusion justifies doing. This study examines the first connection; whether better-supported findings improve defensive actions remains to be tested.
 
 To discuss a collaboration, write to [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with the question you want to test and a brief description of the evidence or expertise you could contribute. A description is enough to begin; please do not send confidential logs or credentials.
 
-Fide's aim is to make the evidence behind a security finding easier to check. A real citation gives the reader somewhere to look. The finding still has to survive that look.
+An investigator can be right without having enough evidence to know. Before its finding becomes a reason to act, we should be able to ask: what in the supplied records supports this conclusion? A real citation is the start of that check.
 
 ---
 
