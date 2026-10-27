@@ -1,10 +1,10 @@
-# Release candidate 0.1.0-rc.1
+# Release candidate 0.1.0-rc.2
 
-This version prepares a bounded research companion for review. The repository remains private and the website article unpublished until the owner approves release. Candidate status is intentional; a tag or passing CI does not imply peer review or methods acceptance.
+This editorial revision prepares a companion to a research perspective and its supporting technical note. This candidate is prepared locally; it has not been tagged or uploaded as a GitHub release. The previous v0.1.0-rc.1 tag and draft release remain unchanged. The repository remains private and the website article unpublished until the owner approves release. Candidate status is intentional; a tag or passing CI does not imply peer review or methods acceptance.
 
 ## Contents and verification
 
-The release ZIP contains the complete standalone repository at the tag, without `.git`, private workspace history, local environments or excluded source archives. `SHA256SUMS` identifies the downloadable ZIP. `PACKAGE-PROVENANCE.json` independently records the 21 preserved study files and original companion archive fingerprint.
+The release ZIP contains the complete standalone candidate from the reviewed working files, without `.git`, private workspace history, local environments or excluded source archives. `SHA256SUMS` identifies the downloadable ZIP. `PACKAGE-PROVENANCE.json` independently records the 21 current study files, original hashes and original companion archive fingerprint.
 
 From an extracted release directory, run the commands in [README.md](README.md). Python 3.11 and its standard library suffice. The source-verification command alone retrieves a pinned public file; the remaining study commands run offline.
 

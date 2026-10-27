@@ -1,6 +1,6 @@
 # When an AI investigator fills in the missing evidence
 
-AI is taking on more security investigations. Our tests show why a real citation is not enough to trust a finding.
+Our experiments show how real citations can accompany unsupported conclusions. What should count as sufficient evidence for an AI investigator?
 
 A request for a file appeared in an AWS log. The service sent 277 bytes. Asked what happened, our local Qwen installation described a successful read.
 
@@ -10,11 +10,13 @@ We had deliberately withheld that error field from the model, and told it the fi
 
 In its [October 21 investigation of AI-assisted attacks involving ConnectWise](https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/), Microsoft drew a consequential distinction: successful authentication did not necessarily mean customer data had been accessed or stolen. A security investigation has to preserve that boundary between a recorded action and a claimed outcome. Our experiment tests a smaller version of that problem: what should an AI investigator conclude when a decisive part of the record is unavailable?
 
-Our opening example comes from public cloud records collected by Ariel Cyber Innovation Center. It illustrates the question we tested in a Fide experiment: give models different views of the same events and ask which conclusions those views support. These were constrained log-reading tasks, not investigations carried out by deployed security agents. We then clarified the evidence rules, tested those rules on records collected by other groups, and changed the layout while keeping the facts fixed.
+Our opening example comes from public cloud records collected by Ariel Cyber Innovation Center. At Fide, we used those records to explore a question that matters for autonomous cyber defense: can an investigator distinguish what happened from what its evidence actually establishes?
 
-Clearer instructions helped. But one model still cited real records while describing an error field we had explicitly withheld. It treated information it could not see as though it had checked it.
+**An AI investigator should be evaluated on whether its evidence supports its conclusions. Getting the answer right and citing a real record are useful checks, but neither settles that question.**
 
-**A security finding should identify what the evidence establishes and what remains unknown. Our models could read complete records correctly. That did not mean they knew when incomplete records were insufficient.**
+We tested two local models on constrained log-reading tasks, gave them clearer instructions, and checked their answers on new source records and a different layout. One model cited real records while describing a field it had never received. Clearer instructions helped. In a small formatting check, the same facts also received different answers.
+
+These experiments make the problem concrete. They do not tell us how common it is in deployed systems. We think they make a case for studying evidence support directly, and we want to work with the community on what that evaluation should require.
 
 ## A number can make an answer feel earned
 
@@ -69,32 +71,38 @@ They also give us no basis for prescribing indentation as a security control. Sp
 
 ## A citation is where the checking starts
 
-Our interest at Fide is autonomous cyber defense. An investigator's finding may inform which account to disable, which service to restore, or which incident to close. If a later component relies on that finding, it needs to know what supports it.
+Our interest at Fide is autonomous cyber defense. An investigator's finding may inform which account to disable, which service to restore, or which incident to close. A later component needs more than the conclusion. It needs a way to check why that conclusion follows.
 
-Other researchers are tackling the wider investigation process. [ALERT-BENCH and AIDA](https://arxiv.org/html/2610.10608v1) study how agents retrieve evidence, challenge a proposed decision and decide whether to close or escalate an alert. We examine a smaller question within that process: when a decisive field is unavailable, does the model leave the conclusion open, or supply the missing fact itself?
+Other researchers are tackling the wider investigation process. [ALERT-BENCH and AIDA](https://arxiv.org/html/2610.10608v1) study how agents retrieve evidence, challenge a proposed decision and decide whether to close or escalate an alert. [ALCE](https://aclanthology.org/2023.emnlp-main.398/) evaluates answer quality and citation support separately. Our experiments bring that distinction to a specific security judgment: does the record establish that the requested object was returned?
 
-This study gives us a concrete reason to inspect that connection. Both models could answer correctly when the decisive fields were visible. That success did not establish that they would leave the answer open when those fields were withheld. Clearer instructions helped, while the remaining errors changed in our small formatting check.
+For this structured task, a field check can implement the rule: match the object and time window, inspect the service outcome, and leave the conclusion unresolved when the required information is unavailable. We have not invented a new checking algorithm. Our contribution is a set of inspectable examples, comparisons of instructions and presentation, and a concrete question for evaluating investigators.
 
-For this structured task, the relevant check is straightforward: match the object and time window, inspect the service outcome, and leave the conclusion unresolved when the required information is unavailable. A deterministic field check can implement that rule. Our contribution is the measured failure pattern and the evidence needed to inspect it, rather than a new checking algorithm.
+The question is broader than whether a model can supply a citation. Did it receive the evidence needed for the claim? Does the cited record actually contain that evidence? If decisive evidence is removed, will the investigator withdraw its conclusion?
 
-For people evaluating AI investigators, our results suggest three questions:
+The reverse test matters just as much. Restore the evidence and the investigator should be able to reach a justified conclusion. An investigator that answers every question with “we cannot be sure” has avoided one failure by accepting another.
 
-- Did the system receive the evidence needed for this conclusion?
-- Does the cited record support the specific claim?
-- When decisive evidence is removed, does the system withdraw the conclusion?
+That tradeoff is already visible in adjacent security work. [Trail of Bits reported on October 21](https://blog.trailofbits.com/2026/10/21/your-ai-agent-fixed-the-bug-but-what-else-did-it-change/) that stricter proof requirements reduced false-positive regression findings in preliminary tests, but left some known regressions unconfirmed. In our transfer test, clearer instructions reduced unsupported conclusions while all complete-history verdicts remained correct. Both kinds of error belong in an evaluation of a proposed safeguard.
 
-Those checks should sit alongside tests of whether the system reaches justified conclusions when the evidence is complete. An investigator that refuses to conclude anything is not useful either.
+## What we still need to learn
 
-That tradeoff is already visible in adjacent security work. [Trail of Bits reported on October 21](https://blog.trailofbits.com/2026/10/21/your-ai-agent-fixed-the-bug-but-what-else-did-it-change/) that stricter proof requirements reduced false-positive regression findings in preliminary tests, but left some known regressions unconfirmed. In our transfer test, clearer instructions reduced unsupported conclusions while all complete-history verdicts remained correct. That is a useful result within the selected cases, and a reason to measure both errors before adopting a rule more broadly.
+We tested two local model installations on a limited set of public captures. Twenty-four of the 25 new histories share one capture, and all 25 report successful source outcomes. The six formatting checks show sensitivity to presentation; they do not establish a general remedy. We have demonstrated the problem in this setup, without establishing its prevalence in working security teams or frontier systems.
 
-We tested two local model installations on a limited set of public captures. Twenty-four of the 25 new histories share one capture, and all 25 report successful source outcomes. Our six formatting checks are a diagnostic, not a general remedy. These results establish a failure mode in the tested workflow; they do not tell us how often it occurs in a working security team.
+The next useful test is whether explicit evidence checking improves on ordinary review. Give each reviewer the same records and comparable computational resources. Compare a general request to check the answer with a requirement to identify the exact record and field supporting each claim. Count unsupported findings corrected, but also supported findings wrongly withdrawn. If ordinary review works just as well, the more elaborate procedure has not earned its place.
 
-Whether evidence checks improve containment is a separate question. An accurate account of a past request may still leave the defender needing current access, permission and service information before deciding what to do. This study evaluates findings, not defensive actions.
+We would want that test to include independent captures, successful and failed events, and cases whose outcomes remain unresolved. Whether better-supported findings then improve containment is a further question. This work evaluates findings; it does not measure defensive actions or operational outcomes.
 
-A real citation gives the reader somewhere to look. The finding still has to survive that look.
+## Help test what should count as evidence
+
+We welcome researchers and security practitioners who want to examine this work with us. The most useful contributions would be shareable investigation cases with clear evidence boundaries, replications on other systems, or comparisons of review methods that measure both unsupported claims and missed justified conclusions. Counterexamples matter: a workflow that handles these distinctions reliably would help identify what works.
+
+The accompanying technical note and limited companion provide the methods, retained responses and scoring needed to start. They also identify what cannot be reproduced from the export. You can challenge a reference judgment, trace a claim back to its input, or propose a test that would change our interpretation.
+
+To discuss a collaboration, write to [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with the question you want to test and a brief description of the evidence or expertise you could contribute. A description is enough to begin; please do not send confidential logs or credentials.
+
+Fide's aim is to make the evidence behind a security finding easier to check. A real citation gives the reader somewhere to look. The finding still has to survive that look.
 
 ---
 
-**About the study.** The combined work contains 996 evaluated calls, including exploratory intervention and robustness checks; repeated calls are not new cases. Four earlier synthetic format checks are recorded separately. All model runs used two locally installed models. The [technical paper](TECHNICAL-PAPER.md) describes source selection, scoring, model identities and limitations. The [companion](../README.md) supports offline rescoring of 306 responses based on Apache-licensed Splunk data and arithmetic checks of the full result ledger. The remaining source material stays outside that export while its redistribution terms are resolved.
+**About the supporting experiments.** The combined work contains 996 evaluated calls, including exploratory intervention and robustness checks; repeated calls are not new cases. Four earlier synthetic format checks are recorded separately. All model runs used two locally installed models. The [technical note](TECHNICAL-PAPER.md) describes source selection, scoring, model identities and limitations. The [companion](../README.md) supports offline rescoring of 306 responses based on Apache-licensed Splunk data and arithmetic checks of the full result ledger. The remaining source material stays outside that export while its redistribution terms are resolved.
 
 **Sources:** [Ariel Cyber source repository](https://github.com/ArielCyber/cloud_log_sampling/tree/18d3f248f4def592f4e86152c3fcb54506fbcbf6), [Splunk capture](https://github.com/splunk/attack_data/tree/aafa53ea228fbab8d9ac3e33c9275fab2136909d/datasets/attack_techniques/T1530/aws_exfil_high_no_getobject), [OTRF collection metadata](https://github.com/OTRF/Security-Datasets/blob/d9d40ef123d2c87d5d3df28c96bcab4f0faccc87/datasets/atomic/_metadata/SDAWS-200914011940.yaml), [the separate access-denied case](https://yuy-83.hatenablog.com/entry/iam-source-ip-restriction-cloudformation-error), [AWS error-response documentation](https://docs.aws.amazon.com/AmazonS3/latest/developerguide/ErrorResponses.html).

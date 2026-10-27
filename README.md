@@ -1,14 +1,14 @@
 # When an AI investigator fills in the missing evidence
 
-**A real citation can accompany a claim about a field the model was never shown.** This Fide AI study tests that gap in controlled cloud-log reading tasks. It asks whether a model's conclusion is supported by the evidence available to it, rather than whether the hidden outcome happened to match its answer.
+**What should count as sufficient evidence for an AI investigator?** This companion supports Fide’s research perspective with controlled cloud-log experiments. In the tested setup, real citations accompanied claims about fields the model was never shown. The perspective argues for evaluating evidence support directly and invites collaboration on whether explicit checks improve investigative findings.
 
-**Release candidate `0.1.0-rc.1`.** Prepared for review; the website article remains unpublished. Repository availability does not imply independent human acceptance of the methods or conclusions.
+**Release candidate `0.1.0-rc.2`.** Prepared for review; the website article remains unpublished. Repository availability does not imply independent human acceptance of the methods or conclusions.
 
-Read the [accessible article](study/publication/INSIGHT.md), the [technical paper](study/publication/TECHNICAL-PAPER.md), or go straight to [the preserved model inputs and responses](study/data/splunk-replay.jsonl).
+Read the [research perspective](study/publication/INSIGHT.md), the [technical note](study/publication/TECHNICAL-PAPER.md), or go straight to [the preserved model inputs and responses](study/data/splunk-replay.jsonl).
 
-## What the study found
+## What the supporting experiments found
 
-Clearer evidence rules reduced unsupported conclusions in the selected transfer cases. But one model still cited existing record IDs while describing an explicitly withheld error field as null. Complete-record accuracy did not establish that the model knew when incomplete records were insufficient.
+Clearer evidence rules reduced unsupported conclusions in the selected transfer cases. But one model still cited existing record IDs while describing an explicitly withheld error field as null. Correct answers on complete records did not establish that the model would leave an answer unresolved when decisive evidence was missing.
 
 The main transfer used 25 histories. This repository includes 24 Splunk histories and the corresponding 24 examples of that unavailable-field assertion. The remaining OTRF history is outside the export pending redistribution review. These are controlled judgments by two local model installations, not a test of operational defender effectiveness.
 
@@ -47,16 +47,26 @@ This downloads one 160,393-byte Splunk source file, verifies its SHA256, reconst
 
 The 690 other source-dependent replays are excluded because redistribution has not been cleared. Their categorical results are included for aggregate reconstruction, but this repository alone cannot validate their original evidence or answers. The paper explains source selection, dependence between cases, reused exploratory examples, and the small formatting diagnostic. No claim of broad defensive efficacy follows from these tests.
 
+## Work on the question with Fide
+
+We are interested in three kinds of contribution:
+
+- **Check or replicate the finding.** Identify a case, input field and claim, or rerun a documented comparison on a reproducible model package. Report counterexamples and null results too.
+- **Qualify new cases.** Propose shareable records with supported successes, failures or unresolved outcomes, preferably from independent captures. Explain what each record can and cannot establish.
+- **Test a review method.** Compare explicit claim-to-evidence checking with equally resourced ordinary review. Measure corrected unsupported findings alongside justified findings wrongly withdrawn.
+
+These are open research questions, not demonstrated benefits of a Fide defense system. See [CONTRIBUTING.md](CONTRIBUTING.md) for reporting requirements. For collaboration, email [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with a brief description of your question and contribution. Do not send confidential logs or credentials.
+
 ## Repository map
 
-- [study/](study/README.md): the preserved companion package, including manuscripts, evidence and scripts.
-- [PACKAGE-PROVENANCE.json](PACKAGE-PROVENANCE.json): the original archive fingerprint and all 21 extracted file hashes.
+- [study/](study/README.md): the study package, including current manuscripts, unchanged evidence and scripts.
+- [PACKAGE-PROVENANCE.json](PACKAGE-PROVENANCE.json): the original archive fingerprint, original file hashes and current editorial revision hashes.
 - [MODEL-REPRODUCTION.md](study/MODEL-REPRODUCTION.md): exact model identities and limits of new inference.
 - [DATA-DICTIONARY.md](DATA-DICTIONARY.md): field definitions, joins, conditions and counting limits.
 - [CONTRIBUTING.md](CONTRIBUTING.md): how to report a discrepancy or propose a replication.
 - [RELEASE.md](RELEASE.md) and [CHANGELOG.md](CHANGELOG.md): version scope, validation and release status.
 
-The original package is preserved byte for byte under `study/`, including its candidate-status manifest. Repository setup and automation live outside that directory. No internal research workspace history, planning documents, private review notes or subsequent defense experiments are included.
+Experimental data, model metadata, scoring scripts and source notices under `study/` remain byte-identical to the first candidate. The manuscripts and study README were revised for the research perspective; their manifest was refreshed. `PACKAGE-PROVENANCE.json` distinguishes original and current hashes. The `v0.1.0-rc.1` tag preserves the earlier complete package. Repository setup and automation live outside `study/`. No internal research workspace history, planning documents, private review notes or subsequent defense experiments are included.
 
 ## Licensing and citation
 
@@ -64,6 +74,6 @@ Fide-authored code uses [MIT](LICENSE). Fide-authored manuscripts, documentation
 
 Citation metadata is available in [CITATION.cff](CITATION.cff). Suggested citation:
 
-> Fide AI. (2026). *When an AI investigator fills in the missing evidence: research companion* (0.1.0-rc.1, release candidate). https://github.com/FideAI/soc-evidence-sufficiency
+> Fide AI. (2026). *When an AI investigator fills in the missing evidence: research companion* (0.1.0-rc.2, release candidate). https://github.com/FideAI/soc-evidence-sufficiency
 
 Include the exact commit if you use a modified or untagged checkout. No DOI or peer-review status is claimed. Research by [Fide AI](https://fideai.org).

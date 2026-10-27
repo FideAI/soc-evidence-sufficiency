@@ -20,4 +20,4 @@ For Fide material, credit **Fide AI**, name the study **When an AI investigator 
 
 ## Preserved package
 
-The original 21 companion files under `study/` retain their recorded bytes and hashes. Their older README and code-license wording predate this repository-level grant. This document adds explicit reuse permission for Fide-authored manuscripts, data and documentation without changing those historical files or removing any existing permission. Scientific release status is recorded separately in [RELEASE.md](RELEASE.md).
+The experimental evidence, code, model metadata and source notices under `study/` retain their original bytes. The manuscripts and README have a documented editorial revision; PACKAGE-PROVENANCE.json records original and current hashes. The original package remains available at the v0.1.0-rc.1 tag. This document adds explicit reuse permission for Fide-authored manuscripts, data and documentation without removing any existing permission. Scientific release status is recorded separately in [RELEASE.md](RELEASE.md).

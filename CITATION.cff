@@ -5,7 +5,7 @@ title: "When an AI investigator fills in the missing evidence: research companio
 authors:
   - name: "Fide AI"
     website: "https://fideai.org"
-version: "0.1.0-rc.1"
+version: "0.1.0-rc.2"
 url: "https://github.com/FideAI/soc-evidence-sufficiency"
 repository-code: "https://github.com/FideAI/soc-evidence-sufficiency"
 license:
@@ -18,8 +18,10 @@ keywords:
   - AI investigation
   - reproducibility
 abstract: >-
-  A controlled cloud-log evidence study comparing original and clarified
-  instructions and inspecting unsupported assertions about withheld fields.
+  Supporting experiments for a research perspective on evidence sufficiency
+  in AI investigation, with a proposed collaborative research agenda.
+  A controlled cloud-log study compares original and clarified
+  instructions and inspects unsupported assertions about withheld fields.
   The companion contains 996 categorical decision records and 306 exact
   Splunk-based input/output replays. It supports retained-response analysis,
   not a claim of fresh inference replication or operational defense efficacy.

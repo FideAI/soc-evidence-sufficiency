@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0-rc.2 — 2026-10-26 (prepared, not released)
+
+Reframes the Insights article as a research perspective, retains the full empirical account in a supporting technical note, and adds concrete collaboration routes and falsifiable follow-up questions. Updates companion guidance, manifests and version metadata. Experimental inputs, responses, labels, scoring, source selection and all 996 evaluated results are unchanged. The rc.1 tag and its uploaded release assets remain immutable. No new inference, public release or independent human acceptance is claimed.
+
 ## 0.1.0-rc.1 — 2026-10-26
 
 First versioned release candidate of the standalone study companion.

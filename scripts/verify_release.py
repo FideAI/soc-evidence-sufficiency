@@ -18,6 +18,12 @@ assert version in (ROOT / "README.md").read_text()
 assert version in (ROOT / "CHANGELOG.md").read_text()
 provenance = json.loads((ROOT / "PACKAGE-PROVENANCE.json").read_text())
 expected = provenance["files"]
+original = provenance["original_files"]
+editorial = {"README.md", "publication/INSIGHT.md", "publication/TECHNICAL-PAPER.md", "MANIFEST.json"}
+assert set(expected) == set(original)
+changed = {name for name in expected if expected[name] != original[name]}
+assert changed <= editorial, sorted(changed - editorial)
+assert changed == set(provenance["editorial_revision"]["changed_files"])
 actual = {str(p.relative_to(ROOT / "study")) for p in (ROOT / "study").rglob("*")
           if p.is_file() and "__pycache__" not in p.parts}
 assert actual == set(expected), {"extra": sorted(actual - set(expected)),
@@ -35,5 +41,7 @@ for path in list(ROOT.glob("*.md")) + list((ROOT / "study").rglob("*.md")):
         local = (path.parent / unquote(parsed.path)).resolve()
         assert local.is_relative_to(ROOT), (str(path.relative_to(ROOT)), target)
         assert local.exists(), (str(path.relative_to(ROOT)), target)
-print(json.dumps({"passed": True, "preserved_package_files": len(expected),
+print(json.dumps({"passed": True, "verified_package_files": len(expected),
+                  "unchanged_original_files": len(expected) - len(changed),
+                  "editorial_revision_files": sorted(changed),
                   "local_documentation_links": "valid", "new_inference": False}))

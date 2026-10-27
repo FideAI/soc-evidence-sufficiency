@@ -1,8 +1,8 @@
 # Evidence sufficiency in AI cloud-log investigation
 
-Research companion to Fide's [Insights article](publication/INSIGHT.md) and [technical paper](publication/TECHNICAL-PAPER.md).
+Research companion to Fide's [research perspective](publication/INSIGHT.md) and [technical note](publication/TECHNICAL-PAPER.md).
 
-The question: can an AI investigator cite a real record while claiming support from a field it was never shown? This package exposes the evidence and scoring behind our answer. It evaluates investigative findings, not containment or operational defense.
+The perspective asks what should count as sufficient evidence for an AI investigator. The supporting experiments show that real record citations can accompany claims about unavailable fields in the tested setup. This package exposes those inputs, responses and scoring for scrutiny. It does not estimate operational prevalence or establish a general remedy.
 
 This package lets a reader recompute all reported stage aggregates and independently rescore the included licensed-source subset. Python 3.11 standard library is sufficient. No model, account, API key or paid inference is required.
 
@@ -17,7 +17,7 @@ Run these commands from the package root after extracting the archive. The first
 
 ## What is included
 
-- `publication/`: the article and technical paper, with working links to this package.
+- `publication/`: the research perspective and technical note, with working links to this package.
 - `data/decision-ledger.json`: Fide-created categorical results for all 996 evaluated calls, including repeats. This is not 996 independent cases.
 - `data/aggregates.json`: stage-specific totals. Never pool reused exploratory cases, repeats or overlapping challenge windows as fresh evidence.
 - `data/splunk-replay.jsonl`: exact requests and model responses for 288 primary comparisons, 12 exact repeats and six formatting checks involving the 24 Splunk histories.
@@ -38,3 +38,9 @@ The original case selection, source qualification and frozen study protocols rem
 ## Licensing and release
 
 Fide-authored code is MIT licensed; included Splunk-derived record material remains under Apache-2.0, with modifications described in the notices. This does not grant rights in upstream materials that are not included. No raw Ariel Cyber archives, OTRF metadata, full third-party blog, model weights or private host paths are distributed here. No subsequent action-verification experiment or its results are included in this package.
+
+## Help investigate the question
+
+We welcome corrections, replications on other systems and shareable cases that could test whether explicit evidence checking improves on ordinary review. The useful comparison measures unsupported findings corrected and justified findings wrongly withheld, with comparable evidence and computation. These are proposed extensions, not results in this package.
+
+To discuss work with Fide, email [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with the question and a description of what you could contribute. Do not send confidential logs or credentials. Keep new runs and case selections separate from the preserved results; retain null findings and counterexamples.
