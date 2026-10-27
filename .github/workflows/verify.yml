@@ -20,6 +20,7 @@ jobs:
       - run: python study/scripts/reproduce.py
       - run: python study/scripts/test_semantics.py
       - run: python study/scripts/audit_evidence.py
+      - run: python scripts/audit_interpretation.py
   pinned-source:
     runs-on: ubuntu-latest
     timeout-minutes: 5

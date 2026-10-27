@@ -8,9 +8,11 @@ Read the [research perspective](study/publication/INSIGHT.md), the [technical no
 
 ## What the supporting experiments found
 
-Clearer evidence rules reduced unsupported conclusions in the selected transfer cases. But one model still cited existing record IDs while describing an explicitly withheld error field as null. Correct answers on complete records did not establish that the model would leave an answer unresolved when decisive evidence was missing.
+Under the clarified rule, Gemma cited existing record IDs while describing an explicitly withheld error field as null. It had been told that an unavailable errorCode was unknown, not null. Those unsupported success answers matched the hidden source outcomes, showing why outcome accuracy alone misses the evidence problem.
 
-The main transfer used 25 histories. This repository includes 24 Splunk histories and the corresponding 24 examples of that unavailable-field assertion. The remaining OTRF history is outside the export pending redistribution review. These are controlled judgments by two local model installations, not a test of operational defender effectiveness.
+The original `read_observed` label was ambiguous: Gemma’s explanations merely restated that requests were logged. Its original scores remain in the ledger, but they are not clean evidence of fabricated success. Changes to labels and guidance reduced reference-scored premature answers; the experiment does not isolate the two changes.
+
+The main transfer used 25 histories. This repository includes 24 Splunk histories and the corresponding 24 examples of that unavailable-field assertion. All 24 byte-only inputs repeat one single-request pattern from the same capture and second, varying only in identifiers and byte count. They demonstrate behavior on a repeated pattern, not 24 independent confirmations. The remaining OTRF history is outside the export pending redistribution review. These are controlled judgments by two local model installations, not a test of operational defender effectiveness.
 
 ## Reproduce in a few minutes
 
@@ -23,9 +25,10 @@ python3 scripts/verify_release.py
 python3 study/scripts/reproduce.py
 python3 study/scripts/test_semantics.py
 python3 study/scripts/audit_evidence.py
+python3 scripts/audit_interpretation.py
 ```
 
-The first command checks the package hashes and local documentation links. The next commands reconstruct the result totals, rescore preserved responses, exercise ten scoring boundaries, and show the 24 included unavailable-field examples. They run offline. The explanation audit checks an exact observed wording pattern; it is not a general factuality classifier.
+The first command checks the package hashes and local documentation links. The next commands reconstruct the result totals, rescore preserved responses, exercise ten scoring boundaries, and show the 24 included unavailable-field examples. They run offline. The explanation audit checks an exact observed wording pattern; it is not a general factuality classifier. The post-review interpretation audit additionally compares original-label explanations, normalizes the repeated input template and verifies the formatting comparison against retained requests. It does not modify scores or establish a causal mechanism.
 
 To verify every included input against the pinned public source:
 
@@ -53,7 +56,7 @@ We are interested in three kinds of contribution:
 
 - **Check or replicate the finding.** Identify a case, input field and claim, or rerun a documented comparison on a reproducible model package. Report counterexamples and null results too.
 - **Qualify new cases.** Propose shareable records with supported successes, failures or unresolved outcomes, preferably from independent captures. Explain what each record can and cannot establish.
-- **Test a review method.** Compare explicit claim-to-evidence checking with equally resourced ordinary review. Measure corrected unsupported findings alongside justified findings wrongly withdrawn.
+- **Test a review method.** Compare explicit claim-to-evidence checking with equally resourced ordinary review on native logs and claims requiring several records, without supplying an executable decision rule or labels identifying missing fields. Include complete failures and an always-abstain baseline. Measure corrected unsupported findings alongside justified findings wrongly withdrawn.
 
 These are open research questions, not demonstrated benefits of a Fide defense system. See [CONTRIBUTING.md](CONTRIBUTING.md) for reporting requirements. For collaboration, email [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with a brief description of your question and contribution. Do not send confidential logs or credentials.
 

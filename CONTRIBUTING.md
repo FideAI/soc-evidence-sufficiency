@@ -14,4 +14,6 @@ For an exploratory conversation, email [research@fideai.org](mailto:research@fid
 
 Case proposals should identify source ownership and reuse terms, collection context, the proposed claim and the evidence needed to establish it. A source outcome and an answer justified by a limited input are different labels; explain both where possible. Several views of one event are not independent cases.
 
+The present task already supplies a mechanically checkable rule. A useful review-method comparison should go beyond applying that supplied rule: qualify native logs, multi-record claims and unannotated missing fields. Include complete failures, complete successes, unresolved cases and an always-abstain baseline.
+
 Method proposals should name the comparison, available evidence, computation budget, both kinds of error (unsupported conclusions and withheld justified conclusions), and a result that would count against the proposal. Freeze a new test before seeing its model outputs and keep it separate from the original ledger. New cases and runs are not automatically accepted into the study.

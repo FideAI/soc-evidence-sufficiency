@@ -3,9 +3,9 @@
   "source_archive_sha256": "58bbd40dee634d551b2dea2e9e2cffee69a4d6585aff7b2167aa73d6a3d74cfd",
   "files": {
     "LICENSE": "af5fb91f5d45f391937e1f16b80c7918d22e4031bd27631d93bbd7339ced954d",
-    "MANIFEST.json": "5b583d316ee690e83d53d013e7d0ff045061342cd91926b151acc7ec4825b3a8",
+    "MANIFEST.json": "5318408b8b7e249e704766b32d9761d60844c78681adead5ee6e72106b57b3c8",
     "MODEL-REPRODUCTION.md": "fbefa14b5c1df281c608a11906518fa467874c44771d5d91120e55aad67ad04c",
-    "README.md": "0a2f92b1648b5e9ac3178c45e7025b20bd04c8cde5f2736c8ca38bd19e707e2f",
+    "README.md": "fa2175e42a0fa123460f12357ad8caaaf6cf520e29852e8112f023970a4f52a4",
     "THIRD-PARTY-NOTICES.md": "102bbf905441941f566d3107b5cd6ea5c8d116412c0b6d9a1d936967699b303d",
     "data/aggregates.json": "0b26f7a735aae7416a01a3ddd61bfe8c02723320433728c1314984932f6bc475",
     "data/contracts.json": "56ebf0ffa52fad25e58e3b9a4fe1127f3d64e2cc3f3a089ea250d57e4b436cc8",
@@ -17,8 +17,8 @@
     "model-metadata/gemma4-local-params.json": "56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3",
     "model-metadata/qwen3.8-local-manifest.json": "22130167c4c20e20c7b71454612966ca8e8171e9b3cc8ab6ce8aa6cbfec79643",
     "model-metadata/qwen3.8-local-params.json": "906ee87bde6cff7bf3c3b1550f55cbbec261e027187fbb9f511f908ffc418334",
-    "publication/INSIGHT.md": "07c95f20e80117bc277fedb46704ef826ed3543bd832b4faea432392bdb11d3e",
-    "publication/TECHNICAL-PAPER.md": "aa70c8117b44b4925c092b686458c12332703adbba5aae38fa8e89eb70afa391",
+    "publication/INSIGHT.md": "36850f63f1d6a8cc72d370e2730d00baa54e7cbfb6816f34adb98b07b2a5f1e7",
+    "publication/TECHNICAL-PAPER.md": "f133b8e7bebe530d9ba85b2e06d86ed75020499a4541054161036387d8f5212c",
     "scripts/audit_evidence.py": "81f78031de796679d4a331573589c3e79d6af54dbd3d2a54735caaaea19d1c92",
     "scripts/check_source.py": "4ddadc3d6a1897105da513400c1ca9b04b3d61378fb510e25ce55a9bbe62a76b",
     "scripts/reproduce.py": "9c905972f9c9426e7cf716d39992ee5e34332cf3a6535be4007274cbf710afe8",
@@ -49,8 +49,8 @@
   },
   "editorial_revision": {
     "version": "0.1.0-rc.2",
-    "date": "2026-10-26",
-    "scope": "Research perspective, supporting technical note and collaboration guidance; no new inference or empirical revision.",
+    "date": "2026-10-27",
+    "scope": "Research perspective and technical note; corrected interpretation of ambiguous labels and repeated input patterns; no new inference or reference-label changes.",
     "changed_files": [
       "MANIFEST.json",
       "README.md",

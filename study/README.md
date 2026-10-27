@@ -2,7 +2,7 @@
 
 Research companion to Fide's [research perspective](publication/INSIGHT.md) and [technical note](publication/TECHNICAL-PAPER.md).
 
-The perspective asks what should count as sufficient evidence for an AI investigator. The supporting experiments show that real record citations can accompany claims about unavailable fields in the tested setup. This package exposes those inputs, responses and scoring for scrutiny. It does not estimate operational prevalence or establish a general remedy.
+The perspective asks what should count as sufficient evidence for an AI investigator. The supporting experiments show that real record citations can accompany claims about unavailable fields in the tested setup. This package exposes those inputs, responses and scoring for scrutiny. Original-label Gemma explanations merely restated logged requests; their scored errors should not be treated as explicit success claims. The 24 included Splunk byte-only inputs repeat one single-record pattern, rather than providing 24 independent confirmations. It does not estimate operational prevalence or establish a general remedy.
 
 This package lets a reader recompute all reported stage aggregates and independently rescore the included licensed-source subset. Python 3.11 standard library is sufficient. No model, account, API key or paid inference is required.
 
@@ -41,6 +41,6 @@ Fide-authored code is MIT licensed; included Splunk-derived record material rema
 
 ## Help investigate the question
 
-We welcome corrections, replications on other systems and shareable cases that could test whether explicit evidence checking improves on ordinary review. The useful comparison measures unsupported findings corrected and justified findings wrongly withheld, with comparable evidence and computation. These are proposed extensions, not results in this package.
+We welcome corrections, replications on other systems and shareable cases that could test whether explicit evidence checking improves on ordinary review. The useful comparison goes beyond the supplied field predicate to native logs, multi-record claims and unannotated missing fields. It measures unsupported findings corrected and justified findings wrongly withheld, with comparable evidence and computation, complete failure cases and an always-abstain baseline. These are proposed extensions, not results in this package.
 
 To discuss work with Fide, email [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with the question and a description of what you could contribute. Do not send confidential logs or credentials. Keep new runs and case selections separate from the preserved results; retain null findings and counterexamples.

@@ -14,6 +14,7 @@ A successful check establishes:
 - Arithmetic reconstruction of 996 categorical decisions, not 996 independent cases.
 - Rescoring of 306 preserved Splunk responses and reconstruction of their 306 input views from 24 source histories.
 - Ten semantic scoring boundaries and 24 included unavailable-field assertion examples.
+- A post-review interpretation audit of original-label wording, repeated input structure and formatting chronology. This audit is descriptive, not a new experiment.
 
 It does not reproduce fresh model inference, validate all 690 excluded responses from raw evidence, authenticate the original cloud service, or establish operational defense effectiveness.
 
