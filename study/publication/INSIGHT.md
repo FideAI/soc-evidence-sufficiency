@@ -1,20 +1,20 @@
 # When an AI investigator fills in the missing evidence
 
-An AI investigator can reach the right answer, cite a real record, and still lack evidence for its conclusion. Our experiments show why that distinction matters.
+We asked two models to investigate security logs. One cited a real record while claiming to see evidence we had withheld. What should it take to trust the finding?
 
-A request for a file appeared in an Amazon Web Services (AWS) log. The service sent 277 bytes. We asked Qwen, a language model running locally, what happened. It described a successful read.
+A citation is a sensible thing to ask of an AI investigator. If a model says a file was accessed, we ought to be able to follow its reference and see why. That seems a modest standard for a finding someone may use to investigate an account or close an incident.
 
-The full record said otherwise. Its error field read `NoSuchKey`: the requested object did not exist. The byte count accompanied an error response.
+Our experiments show why following the reference matters. In one test, we gave a locally run model, Qwen, part of an Amazon Web Services (AWS) log. A file had been requested and the service had sent 277 bytes. The model described a successful read.
 
-We had deliberately withheld the error field and told the model it was unavailable. From the remaining evidence, it could not tell whether the file had been returned. Yet it treated the byte count as a reason to say yes.
+Those 277 bytes accompanied an error response. The full record said `NoSuchKey`: the requested object did not exist. We had deliberately withheld that error field and told the model it was unavailable. The byte count established that the service had sent a response. It did not establish that the response contained the file.
 
-In that case, the answer was wrong. A more revealing problem appeared in our later test: a model reached the right answer, cited a real record, and described an error field we had explicitly withheld as though it had seen the value. Checking only the answer or whether the cited record existed would have missed the unsupported claim.
+That answer was wrong. The more revealing result came later, when a model got the answer right. It cited a real record and described an error field as though it had seen the value. We had withheld that field too. The answer matched the outcome in the complete record, but the explanation claimed evidence the model had never been given.
 
-**AI investigators need to show that their evidence supports their findings. A correct answer and a real citation are not enough.**
+This is the distinction we want to put under scrutiny. **A correct answer and a real citation are not enough. We need to know whether the evidence actually supports the finding.** If we want people to rely on AI investigations, we should make that check possible before a finding becomes a reason to act.
 
-At Fide, we tested that gap by giving two locally run models, Gemma 4 E4B and Qwen 3.8 27B (4-bit), different views of the same security logs. We removed and restored the fields needed to tell what happened. The saved inputs and responses let readers check whether each conclusion followed from what the model was shown.
+At Fide, we explored this with two locally run models, Gemma 4 E4B and Qwen 3.8 27B (4-bit), giving them different views of the same public security logs. We removed and restored the fields needed to tell what happened, then checked the answers against what each model had been shown. The saved inputs and responses let readers examine the same comparison.
 
-Security teams use investigative findings to decide what needs attention. Before relying on one, they need to know which parts follow from the records and which remain unresolved. Our study makes that distinction visible in a task readers can check. It does not establish how often this failure occurs in deployed systems or whether an additional review step would prevent it.
+This is a small study of a question worth taking seriously. It shows how an answer can appear well supported until someone checks the cited record. It does not tell us how often this happens in working security teams, or whether adding a review step would solve it.
 
 ## A number can make an answer feel earned
 
@@ -34,7 +34,7 @@ An answer can also be right for reasons the records do not support. In our later
 
 ## We made the rule harder to misunderstand
 
-Our wording was part of the problem we needed to examine. We replaced `read_observed` with `object_data_response` and spelled out the decision rule, including the distinction between an error field explicitly showing no error and one we had withheld. We were testing whether the models could follow an explicit evidence rule. They did not have to work out that rule for themselves.
+We also owed the models a clearer question. Our original label, `read_observed`, could mean that a request had been logged, even if the requested data was never returned. We replaced it with `object_data_response` and explained the difference between a field showing no error and a field we had withheld. This made the task more explicit: the models had to apply a rule we supplied, not discover the rule for themselves.
 
 We tried the clearer wording on twelve histories we had already used. Answers that claimed an outcome without the required evidence, according to our scoring rule, fell from 36 of 48 to 9 of 48: Gemma went from 24 to nine, and Qwen from twelve to zero. Eight of Gemma’s nine remaining errors were explicit false success claims on failed-read histories. All complete-history verdicts remained correct. Because the labels and guidance changed together on cases we had already seen, this was an exploratory clarification, not a demonstrated general remedy.
 
@@ -75,7 +75,7 @@ They also give us no basis for prescribing indentation as a security control. Sp
 
 ## A citation is where the checking starts
 
-Fide studies what evidence people need before relying on AI. In cybersecurity, a finding can inform whether to investigate further, disable an account or close an incident. We want those decisions to rest on conclusions the records actually support. That requires a way for a reviewer to check the evidence behind each finding.
+The useful promise of an AI investigator is that it can help someone decide what deserves attention. A finding may be a reason to investigate further, disable an account or close an incident. For Fide, the question is what would justify relying on that finding. Our examples give us a concrete place to start: compare the explanation with the evidence the investigator actually received.
 
 In its [October 21 investigation of AI-assisted attacks involving ConnectWise](https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/), Microsoft drew a consequential distinction: successful authentication did not necessarily mean customer data had been accessed or stolen. A security investigation has to preserve that boundary between a recorded action and a claimed outcome. Our task isolates a smaller version of that distinction.
 
@@ -83,7 +83,7 @@ This is an established evaluation problem. [ALCE](https://aclanthology.org/2023.
 
 In the wider investigation process, [ALERT-BENCH and AIDA](https://arxiv.org/html/2610.10608v1) report attack alerts dismissed after searches returned no records, and same-context review introducing more errors than it corrected. That makes “ask the model to check again” a comparison worth testing, not a safeguard we can assume works.
 
-A simple field check can enforce the rule in our task: match the object and time window, inspect the service outcome, and leave the answer unresolved when the required information is unavailable. The rule itself is straightforward. What our examples expose is a model claiming that the missing evidence was present, despite being told otherwise.
+The check in our task is deliberately simple. Match the object and time window, inspect the service outcome, and leave the answer unresolved if the required information is missing. A field check can enforce that rule. Yet the model could still write an explanation saying the missing evidence was there. That is why we think the explanation deserves scrutiny even when the final answer passes.
 
 The question is broader than whether a model can supply a citation. Did it receive the evidence needed for the claim? Does the cited record actually contain that evidence? If decisive evidence is removed, will the investigator withdraw its conclusion?
 
@@ -101,13 +101,13 @@ Those cases should come from independent captures. Whether better-supported find
 
 ## Help test what should count as evidence
 
-Fide’s contribution is a checkable security example of a problem answer scores can miss: a model cited a real record while claiming to see a value we had withheld. The technical note and companion let readers trace that claim from the supplied input to the response, with the export limits made explicit.
+We want to make this question easier for others to investigate. Fide’s contribution is a set of saved inputs and responses that exposes a gap an answer score can miss: a model cited a real record while claiming to see a value we had withheld. You can check our reading against the same input the model received. The technical note and companion explain how, including which material we can share.
 
-Our longer-term autonomous-defense research asks how findings should inform action. This study takes an earlier step: making it possible to scrutinize the evidence behind the finding. Whether that scrutiny improves investigations and subsequent actions is the work still ahead.
+As we work toward autonomous cyber defense, we want to know which findings can responsibly guide an action. This study gives us something specific to examine before we get there. The next step is to test whether checking the evidence helps investigators correct unsupported claims while keeping conclusions that are justified.
 
 You can start with one finding. The [companion’s short review task](../README.md#check-one-finding) shows the exact input and response for an exported example. Check whether the cited record contains the claimed value, and tell us what supports or challenges our interpretation. No model run is needed. For a correction or a proposed collaboration, write to [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration). Please do not send confidential logs or credentials.
 
-An investigator can be right without having enough evidence to know. Before its finding becomes a reason to act, we should be able to ask: what in the supplied records supports this conclusion? A real citation is the start of that check.
+The citation did something useful in our experiment: it gave us a place to look. Looking revealed the gap. That is the standard we want to work toward for AI investigations: findings whose grounds we can inspect, question and, when the evidence warrants it, rely on.
 
 ---
 

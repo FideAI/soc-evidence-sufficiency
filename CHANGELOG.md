@@ -10,6 +10,8 @@ On November 11, the manuscripts and companion guidance were aligned around the e
 
 The subsequent on-site readability review simplifies the article’s language and shortens its closing argument. Methods, counts, quotations and the technical note remain unchanged. The website also fixes a clipped mobile table explanation; this changes presentation only.
 
+The November 11 voice pass leads with why a citation deserves checking, develops the 277-byte example, and makes Fide’s judgment and invitation more conversational. Experimental evidence, counts, quotations and the technical note are unchanged.
+
 ## 0.1.0-rc.1 — 2026-10-26
 
 First versioned release candidate of the standalone study companion.
