@@ -2,17 +2,17 @@
 
 An AI investigator can reach the right answer, cite a real record, and still lack evidence for its conclusion. Our experiments show why that distinction matters.
 
-A request for a file appeared in an AWS log. The service sent 277 bytes. Asked what happened, our local Qwen installation described a successful read.
+A request for a file appeared in an Amazon Web Services (AWS) log. The service sent 277 bytes. We asked Qwen, a language model running locally, what happened. It described a successful read.
 
 The full record said otherwise. Its error field read `NoSuchKey`: the requested object did not exist. The byte count accompanied an error response.
 
-We had deliberately withheld that error field from the model, and told it the field was unavailable. The right answer was to leave the outcome unresolved. Instead, the byte count became a reason to conclude.
+We had deliberately withheld the error field and told the model it was unavailable. From the remaining evidence, it could not tell whether the file had been returned. Yet it treated the byte count as a reason to say yes.
 
 In that case, the answer was wrong. A more revealing problem appeared in our later test: a model reached the right answer, cited a real record, and described an error field we had explicitly withheld as though it had seen the value. Checking only the answer or whether the cited record existed would have missed the unsupported claim.
 
 **AI investigators need to show that their evidence supports their findings. A correct answer and a real citation are not enough.**
 
-At Fide, we made that distinction inspectable in a narrow security task. We gave local installations of Gemma 4 E4B and Qwen 3.8 27B (4-bit) different views of the same logs, withholding and restoring the fields needed to establish an outcome. Readers can compare the supplied records, exact instructions and retained responses, and judge whether the conclusions were warranted.
+At Fide, we tested that gap by giving two locally run models, Gemma 4 E4B and Qwen 3.8 27B (4-bit), different views of the same security logs. We removed and restored the fields needed to tell what happened. The saved inputs and responses let readers check whether each conclusion followed from what the model was shown.
 
 Security teams use investigative findings to decide what needs attention. Before relying on one, they need to know which parts follow from the records and which remain unresolved. Our study makes that distinction visible in a task readers can check. It does not establish how often this failure occurs in deployed systems or whether an additional review step would prevent it.
 
@@ -30,17 +30,17 @@ The incomplete views told a different story. Qwen left 36 of 40 request-only cas
 
 Gemma chose our `read_observed` label in every incomplete case, but its explanations only restated that a request had been logged. The label could be read that way. Those choices failed our outcome-based scoring rule, but they are not clear evidence that Gemma invented a successful outcome. Qwen’s four request-only errors also merely described logged events.
 
-The distinction we wanted to test was whether a conclusion was justified, not just whether it happened to be true. The main cohort of our later test made that distinction concrete: every source history reported success, so every answer scored as a premature success also matched the hidden outcome. An outcome-only score would have counted them all as correct. That agreement did not supply the missing evidence.
+An answer can also be right for reasons the records do not support. In our later test, all 25 complete histories reported success. A model that declared success from an incomplete view therefore matched the hidden outcome. Checking the final answer alone would miss whether the model had enough evidence to reach it.
 
 ## We made the rule harder to misunderstand
 
-Our wording was part of the problem we needed to examine. We replaced `read_observed` with `object_data_response` and spelled out the decision rule, including the distinction between an error field explicitly showing no error and one we had withheld. The clarified task tests adherence to that supplied rule; it is not an open-ended investigation.
+Our wording was part of the problem we needed to examine. We replaced `read_observed` with `object_data_response` and spelled out the decision rule, including the distinction between an error field explicitly showing no error and one we had withheld. We were testing whether the models could follow an explicit evidence rule. They did not have to work out that rule for themselves.
 
-On twelve reused histories, answers scored as premature fell from 36 of 48 to 9 of 48: Gemma went from 24 to nine, and Qwen from twelve to zero. Eight of Gemma’s nine remaining errors were explicit false success claims on failed-read histories. All complete-history verdicts remained correct. Because the labels and guidance changed together on cases we had already seen, this was an exploratory clarification, not a demonstrated general remedy.
+We tried the clearer wording on twelve histories we had already used. Answers that claimed an outcome without the required evidence, according to our scoring rule, fell from 36 of 48 to 9 of 48: Gemma went from 24 to nine, and Qwen from twelve to zero. Eight of Gemma’s nine remaining errors were explicit false success claims on failed-read histories. All complete-history verdicts remained correct. Because the labels and guidance changed together on cases we had already seen, this was an exploratory clarification, not a demonstrated general remedy.
 
 So we kept both instruction sets unchanged and moved to new public captures from Splunk and OTRF. Before running the models, we fixed the selection, requests and scoring. We checked that the selected events did not overlap the earlier source archive. That establishes a new test for our study; it says nothing about what might have appeared in model training.
 
-The new main cohort contained 25 histories: 24 objects from one Splunk capture and one two-read history from OTRF. Every complete history reported a successful response. For each model, two incomplete views per history produced 50 opportunities to make an unsupported claim.
+The new test contained 25 histories: 24 objects from one Splunk capture and one history containing two reads from OTRF. Every complete history reported a successful response. Each model saw two incomplete versions of each history, giving us 50 answers to score. One version showed requests alone; the other added byte counts. We call the latter “byte-only” below: it still withheld the error fields.
 
 | Local model | Incomplete views scored premature: original rules | Incomplete views scored premature: clearer rules | Complete histories correct: original → clearer |
 |---|---:|---:|---:|
@@ -49,11 +49,11 @@ The new main cohort contained 25 histories: 24 objects from one Splunk capture a
 
 These counts need two qualifications. Gemma’s original-rule explanations only restated that requests were logged; its improvement is consistent with resolving the ambiguous label. We cannot isolate the label change from the added guidance.
 
-The 24 Splunk byte-only inputs also repeat one pattern: a single request logged in the same second, differing only in identifiers and byte count. The uniform results show behavior on that pattern and on the separate two-read OTRF history, not 25 independent confirmations.
+The 24 Splunk byte-only inputs also repeat one pattern: a single request logged in the same second, differing only in identifiers and byte count. The results therefore cover one repeated pattern and the separate OTRF history. They are not 25 independent confirmations.
 
-Both models still classified all 25 complete histories correctly under both instruction sets. These were all successful source histories. One correct Qwen abstention cited a nonmatching record ID with one extra character. We count its verdict as correct and its citation support as failed.
+Both models still classified all 25 complete histories correctly under both instruction sets. These were all successful source histories. One Qwen answer correctly left the outcome unresolved but cited a record ID with an extra character. Its answer passed; its citation failed.
 
-The clearer rules exposed a less ambiguous error. In all 25 Gemma byte-only explanations, it described the withheld error field as `null`, treating it as showing no reported error. The cited identifiers were real. The claimed field value was not in the input. The instructions even said: “An unavailable errorCode is unknown, not null.”
+The clearer rules exposed an error that the ambiguous label could not explain. In all 25 Gemma byte-only explanations, it described the withheld error field as `null`, treating that as evidence that no error was reported. The cited identifiers were real. The claimed field value was not in the input. The instructions even said: “An unavailable errorCode is unknown, not null.”
 
 Assertions about missing error information were not unique to Gemma. Under the original rules, Qwen claimed “no reported error” in 16 of 40 initial byte-only explanations and two of 25 in transfer.
 
@@ -67,11 +67,11 @@ The concern extends beyond log reading. In its [October 23 alignment investigati
 
 We had also specified a small formatting check before running the new study. It used six selected windows, including a separate published troubleshooting case with an access-denied response. We kept the instructions and record values unchanged, but sorted the JSON keys and added indentation. That reordered the top-level fields too, moving the target description from before the records to after them.
 
-All six Gemma byte-only answers changed from unsupported read conclusions to correct abstentions. Qwen stayed correct on its six checks. The 24 exact-request repeats immediately beforehand changed no verdict, validity or citation set. Gemma’s six byte-only repeats still gave premature answers; the reformatted calls minutes later all abstained.
+All six Gemma byte-only answers changed from unsupported read conclusions to correct abstentions. Qwen stayed correct on its six checks. Immediately beforehand, repeating 24 requests exactly had changed none of the verdicts, whether the responses passed the format checks, or the record IDs they cited. Gemma’s six byte-only repeats still gave premature answers; the reformatted calls minutes later all abstained.
 
-That result changes how we interpret the failure. These examples do not demonstrate that the model could never apply the rule. They suggest that how the same information arrived affected its application. The repeats ran immediately before the formatting checks, which narrows the timing concern. The phases were still sequential, so we cannot rule out every runtime or ordering effect.
+Gemma could apply the rule in these examples, but did so inconsistently across presentations of the same facts. The unchanged repeats just beforehand make the difference harder to dismiss as ordinary variation between calls. Still, the checks ran in sequence, so changes in the runtime or the order of testing could have contributed.
 
-They also give us no basis for prescribing indentation as a security control. Spacing and field order changed together. We tested only six reused windows in this check, and did not test whether the altered format preserved accuracy on complete histories. The useful result is the sensitivity itself, along with a concrete way to inspect it.
+They also give us no basis for prescribing indentation as a security control. Spacing and field order changed together. We tested only six reused windows in this check, and did not test whether the altered format preserved accuracy on complete histories. The same facts produced different answers in these checks. We have not established a reliable fix.
 
 ## A citation is where the checking starts
 
@@ -83,7 +83,7 @@ This is an established evaluation problem. [ALCE](https://aclanthology.org/2023.
 
 In the wider investigation process, [ALERT-BENCH and AIDA](https://arxiv.org/html/2610.10608v1) report attack alerts dismissed after searches returned no records, and same-context review introducing more errors than it corrected. That makes “ask the model to check again” a comparison worth testing, not a safeguard we can assume works.
 
-For this structured task, a field check can implement the rule: match the object and time window, inspect the service outcome, and leave the conclusion unresolved when the required information is unavailable. We have not invented a new checking algorithm. The useful contribution is an inspectable failure despite an explicit rule, with the inputs and responses available for others to challenge.
+A simple field check can enforce the rule in our task: match the object and time window, inspect the service outcome, and leave the answer unresolved when the required information is unavailable. The rule itself is straightforward. What our examples expose is a model claiming that the missing evidence was present, despite being told otherwise.
 
 The question is broader than whether a model can supply a citation. Did it receive the evidence needed for the claim? Does the cited record actually contain that evidence? If decisive evidence is removed, will the investigator withdraw its conclusion?
 
@@ -95,17 +95,15 @@ That tradeoff is already visible in adjacent security work. [Trail of Bits repor
 
 We tested two local model installations on a limited set of public captures. Twenty-four of the 25 new histories share one capture, and all 25 report successful source outcomes. The six formatting checks show sensitivity to presentation; they do not establish a general remedy. We have demonstrated the problem in this setup, without establishing its prevalence in working security teams or frontier systems.
 
-The next useful test is whether explicit evidence checking improves on ordinary review when the answer cannot be read off a supplied decision rule. Native logs, claims that require several records, and missing fields not labelled “withheld” would make that a harder and more informative comparison. Give reviewers the same records and comparable computational resources; compare ordinary review with a requirement to identify the evidence supporting each claim. Include complete successes, complete failures, unresolved cases and an always-abstain baseline. Count unsupported findings corrected and justified findings wrongly withdrawn. If ordinary review works just as well, the more elaborate procedure has not earned its place.
+The next useful test is whether explicit evidence checking improves on ordinary review when the answer cannot be read off a supplied decision rule. Native logs, claims that require several records, and missing fields not labelled “withheld” would make that a harder and more informative comparison. Give reviewers the same records and comparable computational resources; compare ordinary review with a requirement to identify the evidence supporting each claim. Include records that establish success, records that establish failure, and cases the evidence cannot resolve. Also compare against a system that always declines to answer. Count unsupported findings corrected and justified findings wrongly withdrawn. If ordinary review works just as well, the more elaborate procedure has not earned its place.
 
 Those cases should come from independent captures. Whether better-supported findings then improve containment is a further question. This work evaluates findings; it does not measure defensive actions or operational outcomes.
 
 ## Help test what should count as evidence
 
-Fide’s contribution is a security example readers can inspect and an evaluation question they can test: does an investigator’s conclusion remain justified by the evidence it actually received? Withholding and restoring decisive fields lets us examine that question separately from whether the answer happens to match the hidden outcome or the citation names a real record.
+Fide’s contribution is a checkable security example of a problem answer scores can miss: a model cited a real record while claiming to see a value we had withheld. The technical note and companion let readers trace that claim from the supplied input to the response, with the export limits made explicit.
 
-This is one part of evaluating an AI investigator: checking whether its findings are supported by what it was shown. The next question is whether that check improves investigations while preserving conclusions the evidence does justify. A comparison in which ordinary review works just as well would be a useful result too.
-
-The technical note and limited companion provide the methods, retained responses and scoring needed to challenge our findings, including the limits of what can be reproduced. Our longer-term autonomous-defense research asks how a supported finding should inform action. This study examines the evidence behind the finding; whether better-supported findings improve defensive actions remains to be tested.
+Our longer-term autonomous-defense research asks how findings should inform action. This study takes an earlier step: making it possible to scrutinize the evidence behind the finding. Whether that scrutiny improves investigations and subsequent actions is the work still ahead.
 
 You can start with one finding. The [companion’s short review task](../README.md#check-one-finding) shows the exact input and response for an exported example. Check whether the cited record contains the claimed value, and tell us what supports or challenges our interpretation. No model run is needed. For a correction or a proposed collaboration, write to [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration). Please do not send confidential logs or credentials.
 

@@ -8,6 +8,8 @@ The October 27 review correction distinguishes ambiguous original-label answers 
 
 On November 11, the manuscripts and companion guidance were aligned around the evidence people need before relying on AI findings. A pinned single-example review task gives contributors a concrete starting point. The independent review comparison and longer-term action research remain proposed; no new experiment or release is implied.
 
+The subsequent on-site readability review simplifies the article’s language and shortens its closing argument. Methods, counts, quotations and the technical note remain unchanged. The website also fixes a clipped mobile table explanation; this changes presentation only.
+
 ## 0.1.0-rc.1 — 2026-10-26
 
 First versioned release candidate of the standalone study companion.
