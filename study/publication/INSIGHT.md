@@ -14,7 +14,7 @@ In that case, the answer was wrong. A more revealing problem appeared in our lat
 
 At Fide, we made that distinction inspectable in a narrow security task. We gave local installations of Gemma 4 E4B and Qwen 3.8 27B (4-bit) different views of the same logs, withholding and restoring the fields needed to establish an outcome. Readers can compare the supplied records, exact instructions and retained responses, and judge whether the conclusions were warranted.
 
-This matters for autonomous defense because an investigative finding may become the basis for action. Our experiments do not establish how often this failure occurs in deployed systems or whether an additional review step would prevent it. They show why evidence support deserves its own test, alongside answer accuracy and citation validity.
+Security teams use investigative findings to decide what needs attention. Before relying on one, they need to know which parts follow from the records and which remain unresolved. Our study makes that distinction visible in a task readers can check. It does not establish how often this failure occurs in deployed systems or whether an additional review step would prevent it.
 
 ## A number can make an answer feel earned
 
@@ -75,7 +75,7 @@ They also give us no basis for prescribing indentation as a security control. Sp
 
 ## A citation is where the checking starts
 
-Our interest at Fide is autonomous cyber defense. An investigator's finding may inform which account to disable, which service to restore, or which incident to close. A later component needs more than the conclusion. It needs a way to check why that conclusion follows.
+Fide studies what evidence people need before relying on AI. In cybersecurity, a finding can inform whether to investigate further, disable an account or close an incident. We want those decisions to rest on conclusions the records actually support. That requires a way for a reviewer to check the evidence behind each finding.
 
 In its [October 21 investigation of AI-assisted attacks involving ConnectWise](https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/), Microsoft drew a consequential distinction: successful authentication did not necessarily mean customer data had been accessed or stolen. A security investigation has to preserve that boundary between a recorded action and a claimed outcome. Our task isolates a smaller version of that distinction.
 
@@ -103,11 +103,11 @@ Those cases should come from independent captures. Whether better-supported find
 
 Fide’s contribution is a security example readers can inspect and an evaluation question they can test: does an investigator’s conclusion remain justified by the evidence it actually received? Withholding and restoring decisive fields lets us examine that question separately from whether the answer happens to match the hidden outcome or the citation names a real record.
 
-The next step is to find out whether explicit evidence review improves findings in less structured investigations. We want to work with researchers and security practitioners on shareable cases, replications and comparisons that count both unsupported claims corrected and justified conclusions wrongly withdrawn. A method that handles our examples reliably—or a comparison in which ordinary review works just as well—would be a useful result.
+This is one part of evaluating an AI investigator: checking whether its findings are supported by what it was shown. The next question is whether that check improves investigations while preserving conclusions the evidence does justify. A comparison in which ordinary review works just as well would be a useful result too.
 
-The technical note and limited companion provide the methods, retained responses and scoring needed to challenge our findings. They also identify what cannot be reproduced from the export. The broader aim is to connect what a defender observes, what it concludes, and what that conclusion justifies doing. This study examines the first connection; whether better-supported findings improve defensive actions remains to be tested.
+The technical note and limited companion provide the methods, retained responses and scoring needed to challenge our findings, including the limits of what can be reproduced. Our longer-term autonomous-defense research asks how a supported finding should inform action. This study examines the evidence behind the finding; whether better-supported findings improve defensive actions remains to be tested.
 
-To discuss a collaboration, write to [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with the question you want to test and a brief description of the evidence or expertise you could contribute. A description is enough to begin; please do not send confidential logs or credentials.
+You can start with one finding. The [companion’s short review task](../README.md#check-one-finding) shows the exact input and response for an exported example. Check whether the cited record contains the claimed value, and tell us what supports or challenges our interpretation. No model run is needed. For a correction or a proposed collaboration, write to [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration). Please do not send confidential logs or credentials.
 
 An investigator can be right without having enough evidence to know. Before its finding becomes a reason to act, we should be able to ask: what in the supplied records supports this conclusion? A real citation is the start of that check.
 

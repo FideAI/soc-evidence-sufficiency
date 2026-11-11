@@ -1,6 +1,6 @@
 # Release candidate 0.1.0-rc.2
 
-This editorial revision prepares a companion to a research perspective and its supporting technical note. This candidate is prepared locally; it has not been tagged or uploaded as a GitHub release. The previous v0.1.0-rc.1 tag and draft release remain unchanged. The repository remains private and the website article unpublished until the owner approves release. Candidate status is intentional; a tag or passing CI does not imply peer review or methods acceptance.
+This editorial revision prepares a companion to a research perspective and its supporting technical note. The November 11 update connects the work to evaluating whether AI findings warrant reliance and adds a pinned, offline single-finding review task. Experimental evidence remains unchanged. This candidate is prepared locally; it has not been tagged or uploaded as a GitHub release. The previous v0.1.0-rc.1 tag and draft release remain unchanged. The repository remains private and the website article unpublished until the owner approves release. Candidate status is intentional; a tag or passing CI does not imply peer review or methods acceptance.
 
 ## Contents and verification
 

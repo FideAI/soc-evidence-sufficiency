@@ -2,7 +2,7 @@
 
 We welcome corrections to the scoring, source reconstruction, interpretation and presentation. A useful report names a case or response ID, the claim at issue, the evidence that supports or contradicts it, and the command or reasoning needed to reproduce your result. Include the repository commit you inspected.
 
-Run the README commands before proposing changes. Distinguish a recomputation of preserved responses from a fresh model run. For new inference, report the model artifact, configuration, prompts, selection and exclusions; do not pool it silently with the original data.
+For a first contribution, use the [single-finding review task](study/README.md#check-one-finding). It supplies a pinned evidence file, exact response ID, extraction command and a short reporting format. You can challenge one interpretation without running the full reproduction suite. For changes to scoring or source reconstruction, run the relevant README checks. Distinguish a recomputation of preserved responses from a fresh model run. For new inference, report the model artifact, configuration, prompts, selection and exclusions; do not pool it silently with the original data.
 
 The experimental files under `study/` are preserved evidence; manuscripts and documentation may evolve with a recorded revision. Do not rewrite raw responses or labels to make a check pass. Submit a documented correction with before/after evidence and an explanation of which findings it changes. Keep negative results and counterexamples.
 

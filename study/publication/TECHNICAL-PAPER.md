@@ -1,7 +1,7 @@
 # Evidence sufficiency in AI cloud-log investigation
 ## Technical note supporting a research perspective on investigative evidence
 
-Fide AI · Technical research note · Experiments October 16, 2026 · Interpretation and related work updated October 27, 2026 · Context includes reports through October 23, 2026
+Fide AI · Technical research note · Experiments October 16, 2026 · Interpretation and related work updated October 27, 2026 · Research framing updated November 11, 2026 · Context includes reports through October 23, 2026
 
 ### Abstract
 
@@ -21,7 +21,7 @@ AuditBench evaluates security-log investigation across tasks, prompts and repres
 
 ALERT-BENCH evaluates agents that retrieve telemetry through a live SIEM, and AIDA structures proposed decisions, independent challenge and adjudication with stronger requirements before dismissal. Its reported improvement concerns alert-triage outcomes in replayed scenarios. Its trace analysis also associates empty retrievals with attack-alert dismissal and finds negative net correction from same-context self-review. That finding directly motivates a stronger baseline for our proposed review comparison; we do not claim to originate the question of whether review helps. Our task fixes the evidence supplied and varies the availability of decisive fields; it measures support for a service-outcome claim rather than retrieval, maliciousness or alert disposition. We do not evaluate AIDA, reproduce its results or compare its scores with ours. [Tsegai et al., v1](https://arxiv.org/html/2610.10608v1) is complementary prior work on the wider investigation process.
 
-The research perspective makes a recommendation: evaluate the support for individual findings, including the cost of withholding justified findings. The experiments document specific behavior under controlled evidence removal. They do not establish a general solution or demonstrate that field-level review improves operational defense. Section 9.1 describes questions for collaboration, not additional completed experiments.
+The research perspective connects this test to Fide’s work on the evidence people need before relying on AI. Its recommendation is to evaluate the support for individual findings, including the cost of withholding justified findings. The experiments document specific behavior under controlled evidence removal. They do not establish a general solution or demonstrate that field-level review improves operational defense. Section 9.1 describes questions for collaboration, not additional completed experiments.
 
 ### 2. Sources and observations
 
@@ -116,7 +116,7 @@ The main transfer cohort contains only recorded successful source outcomes, and 
 
 Our normalized schema holds representation mostly constant across publishers. It does not test arbitrary native log parsing, retrieval quality, adversarial prompt injection, multi-agent handoffs or operational containment. The two artifacts, particular runtime and combined wording intervention further bound generalization. Source absence and deliberate withholding are explicitly different states in our reference; transferring that convention to another service requires fresh qualification.
 
-The evaluation implication is to test evidence sufficiency separately from complete-record accuracy and identifier validity. In this task, real record citations coexist with claims about unavailable fields. A field-level check can expose that mismatch, but its agreement with our reference is not a novel algorithmic result.
+The evaluation implication is to test evidence sufficiency separately from complete-record accuracy and identifier validity. In this task, real record citations coexist with claims about unavailable fields. A reviewer can inspect the actual input and determine whether the claimed value was available. That makes the finding contestable before anyone relies on it. A field-level check can expose this mismatch, but its agreement with our reference is not a novel algorithmic result. The study does not establish that people make better decisions after seeing such a check or that the measure transfers to another domain.
 
 The operational relevance of this distinction is illustrated by [Microsoft's October 21 ARTEX investigation](https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/), which separates successful authentication from established customer-data access or exfiltration. This is a contextual parallel, not an incident tested in our study. [AISI's October 23 assessment](https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident) reports “invalid reasoning and justifications” in cyber evaluations; our observable unavailable-field assertions neither establish motivated reasoning nor explain those incidents. The two local installations here are not a test of the frontier models or deployed systems discussed in those reports.
 
@@ -134,7 +134,7 @@ Evaluation should separately count corrected unsupported conclusions, supported 
 
 Useful new cases would include supported successes, supported failures and unresolved evidence across independent captures. Procedures should be fixed before held-out evaluation, with development and testing separated by capture and uncertainty reported at a defensible unit of independence. Reference judgments and source redistribution rights require qualification before inclusion. Prespecified representation checks should cover both incomplete and complete evidence. Fresh model runs also require reproducible model packages; the existing Gemma acquisition limit remains unresolved.
 
-Fide welcomes source-linked corrections, replications, qualified case contributions and evaluations of alternative review methods. Contact [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with a description of the proposed question and contribution; do not send confidential logs or credentials. Proposed extensions must remain separate from the retained results in this note. Operational action and containment benefits require a further study.
+An immediate contribution is to inspect one preserved example before attempting a new experiment. The [companion review task](../README.md#check-one-finding) identifies an exact response, its input and a reproducible extraction command. A reviewer should report the claimed value, what the cited record supplied, and whether that supports, challenges or leaves our interpretation unresolved. This checks a particular judgment; it does not reproduce model inference or estimate generalization. Fide welcomes such corrections and proposals for the comparisons above at [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration). Do not send confidential logs or credentials. New results must remain separate from the retained results in this note. Operational action and containment benefits require a further study.
 
 ### 10. Reproducibility and availability
 

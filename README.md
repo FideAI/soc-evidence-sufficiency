@@ -1,6 +1,6 @@
 # When an AI investigator fills in the missing evidence
 
-**What should count as sufficient evidence for an AI investigator?** This companion supports Fide’s research perspective with controlled cloud-log experiments. In the main clarified Gemma comparison, correct outcome verdicts and real record citations accompanied assertions about error-field values the model was never shown. The perspective argues for evaluating evidence support directly and invites collaboration on whether explicit checks improve investigative findings.
+**What evidence justifies relying on an AI investigator’s finding?** Fide studies the evidence people need before relying on AI. This companion supports that work with controlled cloud-log experiments and a research perspective on evaluating individual findings. In the main clarified Gemma comparison, correct outcome verdicts and real record citations accompanied assertions about error-field values the model was never shown. The perspective argues for evaluating evidence support directly and invites collaboration on whether explicit checks improve investigative findings.
 
 **Release candidate `0.1.0-rc.2`.** Prepared for review; the website article remains unpublished. Repository availability does not imply independent human acceptance of the methods or conclusions.
 
@@ -52,13 +52,11 @@ The 690 other source-dependent replays are excluded because redistribution has n
 
 ## Work on the question with Fide
 
-We are interested in three kinds of contribution:
+Start by [checking one finding](study/README.md#check-one-finding). The task identifies an exact response, pins the evidence file and prints the instructions, input and answer. Compare the claimed field value with what the record actually supplied. Return your reasoning and any counterevidence. No model access or paid inference is needed.
 
-- **Check or replicate the finding.** Identify a case, input field and claim, or rerun a documented comparison on a reproducible model package. Report counterexamples and null results too.
-- **Qualify new cases.** Propose shareable records with supported successes, failures or unresolved outcomes, preferably from independent captures. Explain what each record can and cannot establish.
-- **Test a review method.** Compare explicit claim-to-evidence checking with equally resourced ordinary review on native logs and claims requiring several records, without supplying an executable decision rule or labels identifying missing fields. Include complete failures and an always-abstain baseline. Measure corrected unsupported findings alongside justified findings wrongly withdrawn.
+This is a bounded way to challenge our interpretation before proposing a larger study. The next research question is whether explicit evidence review improves investigations while preserving justified conclusions. A useful comparison needs equally resourced ordinary review, independently collected cases and both kinds of error counted. It remains a proposal; this package does not establish a defensive benefit.
 
-These are open research questions, not demonstrated benefits of a Fide defense system. See [CONTRIBUTING.md](CONTRIBUTING.md) for reporting requirements. For collaboration, email [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with a brief description of your question and contribution. Do not send confidential logs or credentials.
+[CONTRIBUTING.md](CONTRIBUTING.md) explains how to report a correction or propose that next study. For collaboration, email [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration) with a brief description. Do not send confidential logs or credentials.
 
 ## Repository map
 
