@@ -12,6 +12,8 @@ The subsequent on-site readability review simplifies the article’s language an
 
 The November 11 voice pass leads with why a citation deserves checking, develops the 277-byte example, and makes Fide’s judgment and invitation more conversational. Experimental evidence, counts, quotations and the technical note are unchanged.
 
+A subsequent editorial pass opens with the 277-byte example and the T19 unavailable-field assertion, places the right-answer-without-evidence point beside the all-success transfer results, consolidates repeated statements of the argument, and points the invitation at T19. Experimental evidence, counts, quotations, figures, table and the technical note are unchanged.
+
 ## 0.1.0-rc.1 — 2026-10-26
 
 First versioned release candidate of the standalone study companion.
