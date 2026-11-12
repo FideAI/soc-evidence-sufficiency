@@ -19,6 +19,8 @@ The final review restores the sequential-formatting caveat, marks the explanatio
 
 The disputed-case review narrows the no-literal-null observation and documents three ancillary-write overstatements from two histories in a separate interpretation note. Human codebook adjudication remains pending. Frozen evidence, scores, screen flags and saved AI judgments are unchanged; excluded raw response text is not redistributed.
 
+The reading-flow pass shortens the essay by about 1,000 words, states the evidence-support thesis directly, and removes internal review workflow and detailed run plans from the public reading path. Full methods and review requirements remain in the technical note. Counts, exact quotations, tables and source evidence are unchanged.
+
 ## 0.1.0-rc.2 — updated 2026-11-11 (prepared, not released)
 
 Reframes the Insights article as a research perspective, retains the full empirical account in a supporting technical note, and adds concrete collaboration routes and falsifiable follow-up questions. Updates companion guidance, manifests and version metadata. Experimental inputs, responses, labels, scoring, source selection and all 996 evaluated results are unchanged. The rc.1 tag and its uploaded release assets remain immutable. No new inference, public release or independent human acceptance is claimed.
