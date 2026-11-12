@@ -3,8 +3,6 @@
 
 Fide AI · Report date November 12, 2026 · Technical research note · Experiments October 16, 2026 · Interpretation and related work updated October 27, 2026 · Research framing updated November 11, 2026 · Exploratory frontier run added November 12, 2026 · Context includes reports through October 23, 2026
 
-Publication review: Fide’s owner confirmed completion of their review and accepted the package for release preparation on November 12, 2026. This is owner acceptance of the research perspective and supporting note. The preregistered explanation-screen criterion remains unadjudicated; no blinded coding results, independent peer review or replication pass are reported.
-
 ### Abstract
 
 We test whether two local language-model artifacts distinguish a recorded request from an outcome justified by the evidence available to them. These experiments support Fide’s research perspective: evaluations should check whether the available evidence justifies each finding, alongside answer accuracy and citation validity. Across all 25 clarified byte-only main-transfer explanations, Gemma describes a withheld error field as null while citing existing record IDs. Those success verdicts match the hidden source outcomes, but the visible records do not support the asserted error-field values. Outcome accuracy and valid record identifiers therefore fail to expose the unsupported assertions in this setup. This supplies a concrete motivation for further study, without estimating the prevalence of the failure beyond this setup.
