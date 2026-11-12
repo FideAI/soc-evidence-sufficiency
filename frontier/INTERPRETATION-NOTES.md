@@ -1,6 +1,6 @@
 # Interpretation note: qualified read answers and supporting write claims
 
-Prepared November 12, 2026. This is an interpretation update to an unpublished exploratory candidate, not human adjudication or a new experiment.
+Report date November 12, 2026. This interpretation note accompanies version 0.2.0 and preserves the exploratory study’s formal coding boundaries.
 
 The narrower finding is that our reading of the 18 definite natural-question byte-only explanations identified no literal assignment of null/empty to the withheld error field. It does not establish that every supporting claim in those explanations is justified. A fixed 130-explanation review packet includes all 75 flags, a deterministic 49-response random sample of 245 unflagged incomplete-view explanations, and all 18 definite byte-only conclusions, with overlap removed. A separate AI check and subsequent assistant close reading identified the following concerns. Neither is human or model-blind adjudication.
 
@@ -16,4 +16,4 @@ Our editorial assessment is that the write wording overstates the supplied evide
 
 No raw Ariel-derived inputs or response text are included here. The locators identify responses retained privately; these rows cannot be independently rescored from the public subset alone. T19 remains the shareable exact frontier input/response example. See [README](README.md) for export and reproduction scope and [PROTOCOL](PROTOCOL.md) for the unchanged scoring and human-review requirements.
 
-The frozen protocol, inputs, model responses, numeric scores, 75 screen flags and original AI-check judgments are unchanged. The 127 approvals in the separate AI check cover its two classification questions, not every sentence in each response. All three interpretation uncertainties remain recorded as uncertain. Human adjudication and accountable methods/editorial acceptance remain pending; downstream reuse and defense benefits remain untested.
+The frozen protocol, inputs, model responses, numeric scores, 75 screen flags and original AI-check judgments are unchanged. The 127 approvals in the separate AI check cover its two classification questions, not every sentence in each response. All three interpretation uncertainties remain recorded as uncertain. Fide’s owner accepted the publication package on November 12. That acceptance does not recode these uncertainties or supply the blinded adjudications required for the preregistered screen criterion. Downstream reuse and defense benefits remain separate research questions.

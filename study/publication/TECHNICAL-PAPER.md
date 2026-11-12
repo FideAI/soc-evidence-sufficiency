@@ -1,7 +1,9 @@
 # Evidence sufficiency in AI cloud-log investigation
 ## Technical note supporting a research perspective on investigative evidence
 
-Fide AI · Technical research note · Experiments October 16, 2026 · Interpretation and related work updated October 27, 2026 · Research framing updated November 11, 2026 · Exploratory frontier run added November 12, 2026 · Context includes reports through October 23, 2026
+Fide AI · Report date November 12, 2026 · Technical research note · Experiments October 16, 2026 · Interpretation and related work updated October 27, 2026 · Research framing updated November 11, 2026 · Exploratory frontier run added November 12, 2026 · Context includes reports through October 23, 2026
+
+Publication review: Fide’s owner confirmed completion of their review and accepted the package for release preparation on November 12, 2026. This is owner acceptance of the research perspective and supporting note. The preregistered explanation-screen criterion remains unadjudicated; no blinded coding results, independent peer review or replication pass are reported.
 
 ### Abstract
 

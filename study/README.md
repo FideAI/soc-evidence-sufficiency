@@ -1,5 +1,8 @@
 # Evidence sufficiency in AI cloud-log investigation
 
+Report date: November 12, 2026. Current release version and publication status are recorded in the standalone repository’s top-level README and RELEASE.md.
+
+
 Research companion to Fide's [research perspective](publication/INSIGHT.md) and [technical note](publication/TECHNICAL-PAPER.md).
 
 Fide studies what evidence people need before relying on AI. This perspective asks whether an investigator’s findings are supported by the records it actually received. The supporting experiments show that real record citations can accompany claims about unavailable fields in the tested setup. This package exposes those inputs, responses and scoring for scrutiny. Original-label Gemma explanations merely restated logged requests; their scored errors should not be treated as explicit success claims. The 24 included Splunk byte-only inputs repeat one single-record pattern, rather than providing 24 independent confirmations. It does not estimate operational prevalence or establish a general remedy.

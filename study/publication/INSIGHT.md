@@ -2,6 +2,8 @@
 
 We asked three models to read logs with missing evidence. Their answers reveal why a correct finding and a real citation still need scrutiny.
 
+Fide AI · November 12, 2026
+
 Splunk publishes Amazon Web Services (AWS) logs recorded during simulated attacks. One record from April 2023 shows a request for a stored object and the storage service, S3, sending back 1,463 bytes. We gave that record to three AI models with its error field removed, told each model the field had been removed, and asked whether S3 had returned the object's data.
 
 Gemma 4 E4B, a small model we ran locally, said it had, and gave its reason: “The single record shows a positive bytesTransferredOut with a null errorCode.” It had not been shown an errorCode. Its instructions said: “An unavailable errorCode is unknown, not null.”

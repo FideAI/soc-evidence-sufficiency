@@ -1,31 +1,28 @@
-# Release candidate 0.2.0-rc.1
+# Release 0.2.0 · November 12, 2026
 
-This candidate adds the exploratory November frontier run, Claude Sonnet 5.5 through Claude Code, in `frontier/`, and revises the Insights article and the technical note to report it. The October study package under `study/` keeps its experimental evidence and scripts byte-identical; only the two manuscripts and the manifest changed there. This candidate is prepared locally; it has not been tagged or uploaded as a GitHub release. The v0.1.0-rc.1 tag and draft release remain unchanged, and 0.1.0-rc.2 was never tagged. The repository remains private and the website article unpublished until the owner approves release. Candidate status is intentional; a tag or passing CI does not imply peer review or methods acceptance.
+**Status: prepared for coordinated public release.** Fide’s owner confirmed completion of their review and accepted release preparation on November 12, 2026. The article is set to published status in the website PR, dated November 12. This document records readiness; repository visibility, the version tag, GitHub release and production website deployment have not yet been changed.
 
-## Contents and verification
+## Approved scope
 
-The release ZIP contains the complete standalone candidate from the reviewed working files, without `.git`, private workspace history, local environments or excluded source archives. The website download is paired with `companion.sha256`. Publish an equivalent checksum with any GitHub release. `PACKAGE-PROVENANCE.json` records the 21 current study files, their original hashes and the original companion archive fingerprint; `frontier/MANIFEST.json` records the frontier files.
+The research perspective and supporting technical note cover the October local-model study (`study/`) and the exploratory November Sonnet run (`frontier/`). Their counts remain separate: 996 and 480 calls. The package includes 306 exact October Splunk responses and 24 exact November T19 responses, aggregate counts, frozen instructions and protocol, scoring scripts and source-verification instructions.
 
-From an extracted release directory, run the commands in [README.md](README.md). Python 3.11 and its standard library suffice. The source-verification command alone retrieves a pinned public file; the remaining commands run offline.
+The 690 excluded October responses, non-T19 frontier raw responses, source archives, model weights, local environments, private review records and later defense experiments stay outside this release. Only this standalone repository is intended to become public. Fide’s internal cyber research and website source repositories remain private.
 
-A successful check establishes:
+Owner acceptance is not represented as independent peer review or as the protocol’s blinded, double-coded adjudication. The explanation-screen criterion is not reported as a replication pass or failure. No saved review judgment, protocol, score or model response has been changed to obtain release readiness.
 
-- Package integrity, for both `study/` and `frontier/`, and valid local documentation links.
-- Arithmetic reconstruction of 996 categorical decisions, not 996 independent cases.
-- Rescoring of 306 preserved Splunk responses and reconstruction of their 306 input views from 24 source histories.
-- Ten semantic scoring boundaries and 24 included unavailable-field assertion examples.
-- A post-review interpretation audit of original-label wording, repeated input structure and formatting chronology. This audit is descriptive, not a new experiment.
-- Rescoring of the 24 frontier-run responses for T19 from their exact inputs, agreement among the frontier run's published counts and with the numbers in the article, and the preregistered scorer decoys.
+## Validation
 
-It does not reproduce fresh model inference, validate the excluded October responses or the frontier run's other 19 histories from raw evidence, adjudicate the frontier pattern screen, authenticate the original cloud service, or establish operational defense effectiveness.
+Run all commands in [README.md](README.md) from a clean extraction. Python 3.11 and its standard library suffice. The source-verification command alone downloads a pinned public file; the others run offline. The manifest and provenance records cover the preserved study package and separate frontier files. The website download carries `companion.sha256`.
 
-## Before public release
+These checks rescore retained responses and reconstruct published counts. They do not generate fresh model outputs. Source and inference scope are documented in the technical note, source notices and data dictionary.
 
-1. Complete the protocol’s blinded human review of all flagged explanations and a 20% random sample of unflagged incomplete-view explanations. Report agreement on the 20-explanation subset double-coded by two people. Also adjudicate the 18 plain-question byte-only conclusions; these review sets can overlap. Record the results before deciding the replication criterion.
-2. Resolve the ancillary-write interpretation concerns in `frontier/INTERPRETATION-NOTES.md` within that human review; the separate AI check and assistant close reading do not satisfy it. Record the owner's methods/editorial acceptance and approval of the limited export, including the frontier files.
-3. Make only this dedicated study repository public; do not expose the internal research workspace.
-4. Publish the approved release and its checksum, updating candidate language to match the actual decision. Keep candidate tags immutable; use a new version for subsequent changes.
-5. Check unauthenticated access to the README, manuscripts, evidence files and downloadable archive.
-6. Publish the website article separately after its links and production build are checked. The article's links to this repository are pinned to an earlier commit and should be updated to the released one.
+## Coordinated release operations
 
-The preserved package's candidate-status labels are provenance. They are not evidence of current repository visibility, and should not be rewritten merely to change a release label. The current top-level README and release record state the actual status.
+1. Merge the dedicated companion PR, preserving the pre-run protocol history, then tag the approved commit `v0.2.0` without moving earlier candidate tags.
+2. Build the 52-file source package from that commit and publish its ZIP and SHA256. Verify the website’s matching copy before deployment.
+3. Make **only `FideAI/soc-evidence-sufficiency`** public and publish the versioned release. Check the repository’s history and PR discussions as part of that visibility operation.
+4. Verify anonymous access to the README, version tag, evidence files and release download.
+5. Merge the website PR and deploy through the normal production workflow. Verify the article, date, discovery listings, technical note and downloads. Other publication holds remain in force.
+6. Record actual release URLs, commit IDs, checksums and deployment verification in the private release receipt. Update this status to released only after those operations succeed.
+
+The earlier `v0.1.0-rc.1` tag and draft release remain immutable historical candidates. The original preregistration, experimental dates and evidence-source dates are preserved.

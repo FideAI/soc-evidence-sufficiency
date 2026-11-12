@@ -2,7 +2,7 @@
 
 **What evidence justifies relying on an AI investigator’s finding?** Fide studies the evidence people need before relying on AI. This companion supports that work with controlled cloud-log experiments and a research perspective on evaluating individual findings. With an error field withheld, one local model (Gemma) described it as null while citing real records; another (Qwen) and Claude Sonnet 5.5 described it as unknown when our evidence rule was stated. Asked a plain question without the rule, Sonnet sometimes concluded anyway, saying in its explanation that the evidence was missing. The perspective argues for evaluating evidence support directly and invites collaboration on whether explicit checks improve investigative findings.
 
-**Release candidate `0.2.0-rc.1`.** Prepared for review; the website article remains unpublished. This candidate adds the exploratory November frontier run in [`frontier/`](frontier/README.md). Repository availability does not imply independent human acceptance of the methods or conclusions.
+**Version `0.2.0` · Report date November 12, 2026.** Prepared for coordinated public release following owner review. The package includes the October study and the exploratory November run in [`frontier/`](frontier/README.md). Read the [Fide Insights article](https://fideai.org/insights/when-an-ai-investigator-fills-in-the-missing-evidence/) for the argument and visual explanation. See [RELEASE.md](RELEASE.md) for release steps.
 
 Read the [research perspective](study/publication/INSIGHT.md), the [technical note](study/publication/TECHNICAL-PAPER.md), or go straight to [the preserved model inputs and responses](study/data/splunk-replay.jsonl).
 
@@ -14,7 +14,7 @@ The original `read_observed` label was ambiguous: Gemma’s explanations merely 
 
 The main transfer used 25 histories. This repository includes 24 Splunk histories and the corresponding 24 examples of that unavailable-field assertion. All 24 byte-only inputs repeat one single-request pattern from the same capture and second, varying only in identifiers and byte count. They demonstrate behavior on a repeated pattern, not 24 independent confirmations. The remaining OTRF history is outside the export pending redistribution review. These are controlled judgments by two local model installations, not a test of operational defender effectiveness.
 
-In November, Fide ran a preregistered, exploratory test of Claude Sonnet 5.5 through Claude Code on 20 of these histories, under the clarified rule and under a plain question, four times each (480 calls). With the rule stated, Sonnet gave no premature finding in 160 incomplete calls and answered all 80 complete records correctly. Asked the plain question with byte counts but no error field, it answered "data returned" in 18 of 80 calls; all 18 matched the hidden outcome, and each explanation said the error fields were withheld. That reading awaits human adjudication. Claude Code adds its own text to each request, so these results are exploratory and are not pooled with any API run. Only T19's inputs and responses are included; the other histories appear as counts.
+In November, Fide ran a preregistered, exploratory test of Claude Sonnet 5.5 through Claude Code on 20 of these histories, under the clarified rule and under a plain question, four times each (480 calls). With the rule stated, Sonnet gave no premature finding in 160 incomplete calls and answered all 80 complete records correctly. Asked the plain question with byte counts but no error field, it answered "data returned" in 18 of 80 calls; all 18 matched the hidden outcome, and each explanation said the error fields were withheld. The explanation-screen replication criterion is not reported as adjudicated. Claude Code adds its own text to each request, so these results are exploratory and are not pooled with any API run. Only T19's inputs and responses are included; the other histories appear as counts.
 
 The interpretations are distinct: Gemma asserted an unseen field value, while our reading of Sonnet’s plain-question explanations is that they disclosed an inference from incomplete evidence. The strict evidence rule scores the latter as premature, but every one matched the hidden outcome. A possible loss of that qualification in downstream reuse is a research question; no such handoff was tested.
 
@@ -83,10 +83,10 @@ Fide-authored code uses [MIT](LICENSE). Fide-authored manuscripts, documentation
 
 Citation metadata is available in [CITATION.cff](CITATION.cff). Suggested citation:
 
-> Fide AI. (2026). *What AI investigators do with evidence they don't have: research companion* (0.2.0-rc.1, release candidate). https://github.com/FideAI/soc-evidence-sufficiency
+> Fide AI. (2026). *What AI investigators do with evidence they don't have: research companion* (0.2.0). https://github.com/FideAI/soc-evidence-sufficiency
 
 Include the exact commit if you use a modified or untagged checkout. No DOI or peer-review status is claimed. Research by [Fide AI](https://fideai.org).
 
 ## Supporting claims need their own check
 
-A follow-up close reading found three responses from two histories that qualified the read outcome while overstating a preceding write. No literal null error-field value was supplied, but that is not a blanket finding that the explanations contain no unsupported assertions. The distinction, response locators and pending human adjudication are documented in [the interpretation note](frontier/INTERPRETATION-NOTES.md). Frozen evidence and numerical results are unchanged.
+A follow-up close reading found three responses from two histories that qualified the read outcome while overstating a preceding write. No literal null error-field value was supplied, but that is not a blanket finding that the explanations contain no unsupported assertions. The distinction, response locators and formal classification status are documented in [the interpretation note](frontier/INTERPRETATION-NOTES.md). Frozen evidence and numerical results are unchanged.

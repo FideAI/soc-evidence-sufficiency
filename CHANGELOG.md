@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0 — 2026-11-12 (prepared for public release)
+
+Owner review accepted. Dates the report and citation metadata to November 12, sets the website article to published status for the next deployment, and prepares a versioned public companion. Research inputs, model responses, scores and frozen protocols are unchanged. The unadjudicated explanation-screen endpoint is not promoted to a replication result. Repository visibility, tag/release publication and website deployment remain separate release operations.
+
 ## 0.2.0-rc.1 — 2026-11-12 (prepared, not released)
 
 Adds an exploratory frontier run in a new `frontier/` folder and revises the Insights article to report it.

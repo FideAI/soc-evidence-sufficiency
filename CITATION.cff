@@ -1,11 +1,12 @@
 cff-version: 1.2.0
-message: "Please cite this research companion and the exact version or commit used. This is a release candidate, not a claim of peer review."
+message: "Please cite this research companion and the exact version or commit used."
 type: dataset
 title: "What AI investigators do with evidence they don't have: research companion"
 authors:
   - name: "Fide AI"
     website: "https://fideai.org"
-version: "0.2.0-rc.1"
+version: "0.2.0"
+date-released: "2026-11-12"
 url: "https://github.com/FideAI/soc-evidence-sufficiency"
 repository-code: "https://github.com/FideAI/soc-evidence-sufficiency"
 license:
