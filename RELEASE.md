@@ -1,6 +1,6 @@
 # Release 0.2.0 · November 12, 2026
 
-**Status: prepared for coordinated public release.** Fide’s owner confirmed completion of their review and accepted release preparation on November 12, 2026. The article is set to published status in the website PR, dated November 12. This document records readiness; repository visibility, the version tag, GitHub release and production website deployment have not yet been changed.
+**Release version 0.2.0.** Fide’s owner reviewed the package and authorized its public release on November 12, 2026. The [v0.2.0 tag](https://github.com/FideAI/soc-evidence-sufficiency/tree/v0.2.0) identifies the source snapshot; the [GitHub release](https://github.com/FideAI/soc-evidence-sufficiency/releases/tag/v0.2.0) supplies the complete ZIP and SHA256. The report and citation date are November 12, 2026. The article and matching download are published separately on Fide’s website.
 
 ## Approved scope
 
@@ -16,13 +16,13 @@ Run all commands in [README.md](README.md) from a clean extraction. Python 3.11 
 
 These checks rescore retained responses and reconstruct published counts. They do not generate fresh model outputs. Source and inference scope are documented in the technical note, source notices and data dictionary.
 
-## Coordinated release operations
+## Coordinated release procedure
 
 1. Merge the dedicated companion PR, preserving the pre-run protocol history, then tag the approved commit `v0.2.0` without moving earlier candidate tags.
 2. Build the 52-file source package from that commit and publish its ZIP and SHA256. Verify the website’s matching copy before deployment.
 3. Make **only `FideAI/soc-evidence-sufficiency`** public and publish the versioned release. Check the repository’s history and PR discussions as part of that visibility operation.
 4. Verify anonymous access to the README, version tag, evidence files and release download.
 5. Merge the website PR and deploy through the normal production workflow. Verify the article, date, discovery listings, technical note and downloads. Other publication holds remain in force.
-6. Record actual release URLs, commit IDs, checksums and deployment verification in the private release receipt. Update this status to released only after those operations succeed.
+6. Record actual release URLs, commit IDs, checksums and deployment verification in the private release receipt. Use the version tag and release record to identify the approved source snapshot.
 
 The earlier `v0.1.0-rc.1` tag and draft release remain immutable historical candidates. The original preregistration, experimental dates and evidence-source dates are preserved.
