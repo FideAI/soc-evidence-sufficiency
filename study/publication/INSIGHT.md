@@ -1,6 +1,6 @@
 # What AI investigators do with evidence they don't have
 
-We removed the error field from a cloud-storage log and asked three models what had happened. One described the missing field as empty. Two called it unknown. Asked the question an analyst might ask, the frontier model sometimes reached a conclusion anyway, and said in the same breath that the evidence was missing.
+We asked three models to read logs with missing evidence. Their answers reveal why a correct finding and a real citation still need scrutiny.
 
 Splunk publishes Amazon Web Services (AWS) logs recorded during simulated attacks. One record from April 2023 shows a request for a stored object and the storage service, S3, sending back 1,463 bytes. We gave that record to three AI models with its error field removed, told each model the field had been removed, and asked whether S3 had returned the object's data.
 
@@ -12,7 +12,7 @@ Then we dropped the stated rule and asked Sonnet the plain question: did S3 retu
 
 > The single GetObject record for this bucket and key at the stated time shows bytesTransferredOut of 1463, indicating data was sent to the caller. However, errorCode and responseElements were withheld, so I cannot confirm there was no error, though the nonzero outbound bytes support that data was returned.
 
-The complete record shows that the data was returned. Judged against what happened, Gemma and the plain-question Sonnet were right, and the answers that respected the missing field look least helpful. Judged by whether each cited a real record, every answer passes. Only a third check separates them: whether the evidence each model actually received supports the finding it gave. Gemma's explanation asserts a value it never saw. Sonnet's tells the reader the evidence is missing and then gives the finding anyway.
+The complete record shows that the data was returned. An evaluation that checks only the outcome would credit Gemma and Sonnet's definite answers; one that checks whether the cited record exists would accept every citation. Neither check distinguishes an invented observation from a qualified inference. Gemma claimed to see a field value it had never received. Sonnet acknowledged the missing field and inferred success from the byte count. Our evidence rule requires a stronger basis for a definite finding, but these are different ways of departing from it.
 
 We think evaluations of AI investigators need that third check. A finding such as “data was returned” can lead a team to declare a breach or to close an incident. Its grounds should be open to inspection before anyone acts on it, and an evaluation that scores only the final answer cannot see them.
 
@@ -53,7 +53,7 @@ The local results left an obvious question: would a current frontier model do th
 
 We used 20 histories: all eight failed reads and seven successes from the Ariel records, T19 and the OTRF history from the transfer test, and three short windows from a separately published troubleshooting case, which contain a denied read, a successful read, and one of each. Each history appeared in the same three views under two framings. One stated our evidence rule. The other asked the plain question, with only a note that the named fields had been removed from the records. Every one of the 120 requests ran four times, 480 calls in all.
 
-We ran Sonnet through Claude Code, Anthropic's command-line coding tool, on a subscription rather than the paid API, with thinking set to low effort. Each call started in an empty folder, with tools turned off and our instructions in place of Claude Code's own. Claude Code still adds a few lines to every request: an identity sentence, a description of the computer it runs on, and the signed-in account's email address. We captured the outgoing request to confirm that it carried no tools, project files or other instructions. Those additions are why we treat this run as exploratory. The preregistered API test has not been run.
+We used Claude Code, Anthropic's coding tool, with low reasoning effort and no tools available to the model. Each call started fresh in an empty folder. We inspected an outgoing request: Claude Code still added identity, environment and account context alongside our instructions. That extra context distinguishes this exploratory run from the planned API test, which has not run. The technical note documents the setup and its limits.
 
 | Claude Sonnet 5.5, 80 calls per cell | Complete record: correct | Requests only: definite finding | Byte-only: definite finding |
 |---|---:|---:|---:|
@@ -64,19 +64,19 @@ With the rule stated, Sonnet made no premature finding in 160 incomplete calls a
 
 All 18 of those answers matched what happened. Each came from a history where the data had in fact been returned, half of the 36 byte-only calls on such histories. On the eight failed reads and the three troubleshooting windows, Sonnet never claimed data had been returned. An evaluation that compared answers only with the complete record would have scored all 18 as correct.
 
-We read all 18 explanations. Each states that the error fields were withheld and that the conclusion rests on the byte count. None says the missing field was empty. That reading is ours, and no second person has yet adjudicated it. Our automated screen flagged 75 of Sonnet's explanations, mostly for the word “success” inside sentences such as “success cannot be confirmed.” Those flags await the same review.
+Our reading of the 18 explanations is that each acknowledged the withheld error fields and inferred success from the byte count. We found no assertion that the missing field was empty. A human reviewer still needs to adjudicate that interpretation. Our automated screen also flagged 75 explanations, mostly for the word “success” inside sentences such as “success cannot be confirmed.” These are screening flags, not confirmed errors, and they await review too.
 
 One result runs the other way. Given the complete record and the plain question, Sonnet answered “cannot determine” in all four attempts on the window containing a denied read followed by a successful one. The record supported a definite answer. It was the only place in the run where Sonnet was more cautious than the evidence required.
 
-## The caveat was honest, and the finding traveled without it
+## What happens if a finding loses its caveat?
 
-Across the two studies we saw three ways of handling a missing field. Gemma treated it as present and empty. Qwen and Sonnet, given a stated rule, treated it as unknown and declined. Sonnet, asked a plain question, treated it as unknown and concluded anyway, saying so.
+The examples call for different judgments. Gemma's explanation supplied an unobserved field value. Qwen and Sonnet, given the stated rule, left the outcome unresolved. Asked a plain question, Sonnet sometimes inferred success while acknowledging the missing evidence. A fabricated observation and an inference from incomplete evidence should not receive the same diagnosis.
 
 The third behavior deserves a fair hearing. An experienced analyst might reach the same conclusion from 1,463 bytes. In one Ariel history, four reads each returned exactly as many bytes as the object held when it was stored, and Sonnet answered “data returned” every time. That is a reasonable bet. Our plain question did not state an evidence standard, so in asking it we left the standard to the model; “premature” is our rule applied to an answer that was never told the rule.
 
-The difficulty is where the caveat lives. Each of Sonnet's answers had two parts: a finding, `data_returned`, and a two-sentence explanation containing the qualification. A ticket, dashboard or downstream agent that reads the finding receives the conclusion without its qualification. In this set every such guess was right. The set cannot tell us what let Sonnet decline on every failed read, or whether it would guess wrong on a failed read whose error message resembled returned data.
+The result raises a question about how findings might be used. Each of Sonnet's 18 definite byte-only answers had a categorical finding, `data_returned`, and an explanation carrying the qualification. If a ticket, dashboard or downstream agent copied only the finding, that qualification could be lost. We did not test such a handoff. In this set every one of those inferences matched the outcome. We still need to understand why Sonnet declined on every failed read, and whether it would infer success from an error response that resembled returned data.
 
-Two practical steps follow, one with evidence behind it and one without. Stating the evidence standard in the instructions removed premature findings from Sonnet's answers and from Qwen's in these tests. That is evidence from one task, one rule and three models, not a general remedy. A finding format that records how each conclusion was reached, for instance whether an outcome was observed in the record or inferred from a byte count, would let the qualification travel with the finding. We have not tested that.
+The results support stating the evidence standard explicitly: under the supplied rule, Sonnet and Qwen left incomplete cases unresolved in these tests. Gemma still made premature findings. That is evidence from a narrow task, not a general remedy. A separate proposal is to label whether a finding was observed in the record or inferred from other clues. That could help preserve the distinction when a finding is reused; whether it improves decisions remains untested.
 
 ## A citation is where the checking starts
 
@@ -84,7 +84,7 @@ For Fide, the practical question is which AI findings can responsibly guide an a
 
 Checking whether evidence supports an answer is an established evaluation problem. [ALCE](https://aclanthology.org/2023.emnlp-main.398/) checks whether cited text supports a claim, and [AIS](https://aclanthology.org/2023.cl-4.2/) evaluates attribution to identified sources. [ERASER](https://aclanthology.org/2020.acl-main.408/) tests predictions with evidence removed or retained; [SQuAD 2.0](https://aclanthology.org/P18-2124/) and [AbstentionBench](https://arxiv.org/abs/2506.09038) test when systems should leave questions unanswered. Our addition is a controlled withhold-and-restore example in a security task where the evidence rule can be checked mechanically, now across two local models and one frontier model.
 
-A field check can enforce that rule on the final verdict. It would not stop a model from writing an explanation that presents missing evidence as present, which is what Gemma did, and it would not catch a verdict that outruns an honest explanation, which is what Sonnet did. The UK AI Security Institute's [October 23 alignment investigation](https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident) reported models producing “invalid reasoning and justifications” in a different setting. Our example is narrower and directly inspectable; it does not establish motivated reasoning or explain the behavior AISI investigated.
+A field check can enforce our supplied rule on the final verdict. The explanation needs its own check: does it assert a value the model was never shown, or disclose an inference from the evidence available? Sonnet's plain-question answers also ask us to decide when such an inference is enough for a definite finding. Our strict scoring rule answers that question for this task; it does not settle the standard for every investigation. The UK AI Security Institute's [October 23 alignment investigation](https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident) reported models producing “invalid reasoning and justifications” in a different setting. Our example is narrower and directly inspectable; it does not establish motivated reasoning or explain the behavior AISI investigated.
 
 An evaluation built on this distinction would check whether an investigator received the evidence a claim requires, whether the cited record contains it, and whether the investigator withdraws the conclusion when that evidence is removed. It would also restore the evidence and check that a justified conclusion returns. An investigator that answers every question with “we cannot be sure” has avoided one failure by accepting another, and Sonnet's one over-cautious window is a reminder that the second failure occurs too.
 
@@ -110,7 +110,7 @@ The most useful thing we can share is the evidence itself. The [companion's shor
 
 We also welcome replications on other systems, independently collected cases with clear evidence boundaries, and comparisons of review methods that count justified findings lost as well as unsupported findings caught. For a correction or a proposed collaboration, write to [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration). Please do not send confidential logs or credentials.
 
-All three models cited a real record for T19, and each citation gave us a place to look. Looking showed Gemma inventing a value, Qwen and Sonnet declining, and Sonnet, asked plainly, concluding while it said the value was missing. An evaluation of AI investigators should be able to tell those answers apart, even when every one of them cites the right record.
+All three models cited a real record for T19, and each citation gave us a place to look. Looking exposed the difference between claiming to see a missing value, declining to decide, and drawing an inference with a stated caveat. Fide's contribution is to make those differences inspectable in a controlled security task. An evaluation of AI investigators should be able to tell these answers apart, even when the definite answers happen to be right.
 
 ---
 

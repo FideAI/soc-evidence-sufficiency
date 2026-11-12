@@ -13,6 +13,8 @@ Adds an exploratory frontier run in a new `frontier/` folder and revises the Ins
 
 The frontier run is exploratory: Claude Code adds its own text to each request, and no result is pooled with the October study or with the preregistered API arms, which have not been run. The pattern screen and the 18 plain-question byte-only conclusions await human adjudication. October experimental data, labels, scoring and the 996-row ledger are unchanged. No public release or independent human acceptance is claimed.
 
+The November 12 interpretation pass distinguishes an asserted unseen field value from a disclosed inference, makes downstream caveat loss explicitly hypothetical, and simplifies the article subtitle and harness explanation. The technical note aligns; frozen evidence, scores and protocol are unchanged.
+
 ## 0.1.0-rc.2 — updated 2026-11-11 (prepared, not released)
 
 Reframes the Insights article as a research perspective, retains the full empirical account in a supporting technical note, and adds concrete collaboration routes and falsifiable follow-up questions. Updates companion guidance, manifests and version metadata. Experimental inputs, responses, labels, scoring, source selection and all 996 evaluated results are unchanged. The rc.1 tag and its uploaded release assets remain immutable. No new inference, public release or independent human acceptance is claimed.

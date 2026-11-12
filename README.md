@@ -16,6 +16,8 @@ The main transfer used 25 histories. This repository includes 24 Splunk historie
 
 In November, Fide ran a preregistered, exploratory test of Claude Sonnet 5.5 through Claude Code on 20 of these histories, under the clarified rule and under a plain question, four times each (480 calls). With the rule stated, Sonnet gave no premature finding in 160 incomplete calls and answered all 80 complete records correctly. Asked the plain question with byte counts but no error field, it answered "data returned" in 18 of 80 calls; all 18 matched the hidden outcome, and each explanation said the error fields were withheld. That reading awaits human adjudication. Claude Code adds its own text to each request, so these results are exploratory and are not pooled with any API run. Only T19's inputs and responses are included; the other histories appear as counts.
 
+The interpretations are distinct: Gemma asserted an unseen field value, while our reading of Sonnet’s plain-question explanations is that they disclosed an inference from incomplete evidence. The strict evidence rule scores the latter as premature, but every one matched the hidden outcome. A possible loss of that qualification in downstream reuse is a research question; no such handoff was tested.
+
 ## Reproduce in a few minutes
 
 Use Python 3.11. No package installation, model weights, API key or paid inference is needed. Clone this repository, then run from its root:
