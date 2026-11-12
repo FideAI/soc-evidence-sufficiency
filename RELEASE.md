@@ -1,6 +1,6 @@
 # Release candidate 0.2.0-rc.1
 
-This candidate adds the exploratory November frontier run, Claude Sonnet 5.5 through Claude Code, in `frontier/`, and revises the Insights article to report it. The October study package under `study/` keeps its experimental evidence and scripts byte-identical; only the article and its manifest changed there. This candidate is prepared locally; it has not been tagged or uploaded as a GitHub release. The v0.1.0-rc.1 tag and draft release remain unchanged, and 0.1.0-rc.2 was never tagged. The repository remains private and the website article unpublished until the owner approves release. Candidate status is intentional; a tag or passing CI does not imply peer review or methods acceptance.
+This candidate adds the exploratory November frontier run, Claude Sonnet 5.5 through Claude Code, in `frontier/`, and revises the Insights article and the technical note to report it. The October study package under `study/` keeps its experimental evidence and scripts byte-identical; only the two manuscripts and the manifest changed there. This candidate is prepared locally; it has not been tagged or uploaded as a GitHub release. The v0.1.0-rc.1 tag and draft release remain unchanged, and 0.1.0-rc.2 was never tagged. The repository remains private and the website article unpublished until the owner approves release. Candidate status is intentional; a tag or passing CI does not imply peer review or methods acceptance.
 
 ## Contents and verification
 
