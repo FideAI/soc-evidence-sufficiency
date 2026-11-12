@@ -1,11 +1,12 @@
 cff-version: 1.2.0
-message: "Please cite this research companion and the exact version or commit used. This is a release candidate, not a claim of peer review."
+message: "Please cite this research companion and the exact version or commit used."
 type: dataset
-title: "When an AI investigator fills in the missing evidence: research companion"
+title: "What AI investigators do with evidence they don't have: research companion"
 authors:
   - name: "Fide AI"
     website: "https://fideai.org"
-version: "0.1.0-rc.1"
+version: "0.2.0"
+date-released: "2026-11-12"
 url: "https://github.com/FideAI/soc-evidence-sufficiency"
 repository-code: "https://github.com/FideAI/soc-evidence-sufficiency"
 license:
@@ -18,9 +19,14 @@ keywords:
   - AI investigation
   - reproducibility
 abstract: >-
-  A controlled cloud-log evidence study comparing original and clarified
-  instructions and inspecting unsupported assertions about withheld fields.
+  Supporting experiments for a research perspective on evidence sufficiency
+  in AI investigation, with a proposed collaborative research agenda.
+  A controlled cloud-log study compares original and clarified
+  instructions and inspects unsupported assertions about withheld fields.
   The companion contains 996 categorical decision records and 306 exact
-  Splunk-based input/output replays. It supports retained-response analysis,
-  not a claim of fresh inference replication or operational defense efficacy.
+  Splunk-based input/output replays from two local models, and an exploratory
+  November run of Claude Sonnet 5.5 through Claude Code (480 calls) with its
+  preregistration, per-history counts and 24 exact Splunk-based responses.
+  It supports retained-response analysis, not a claim of fresh inference
+  replication or operational defense efficacy.
   License identifiers apply to different components as mapped in LICENSING.md.

@@ -1,6 +1,6 @@
 # Data dictionary and reading guide
 
-All data files live under `study/data/`. JSON files use UTF-8. `splunk-replay.jsonl` contains one JSON object per line. Python 3.11's standard library is sufficient to read them; no database or dataframe library is required.
+The October study's data files live under `study/data/`; the November frontier run's files live under `frontier/data/` and are described [at the end](#frontier-run-files). JSON files use UTF-8. `splunk-replay.jsonl` contains one JSON object per line. Python 3.11's standard library is sufficient to read them; no database or dataframe library is required.
 
 Start with one replay row, look up its `id` in the decision ledger, then use its `case_id` and visible `record_id` values to find the source locators. A citation identifier tells you which record was cited; it does not establish that the record supports every sentence in the model's answer.
 
@@ -142,3 +142,18 @@ for cited_id in answer['evidence_ids']:
 ```
 
 The example reports a premature conclusion. The cited visible record names `errorCode` in `withheld_fields`, while the model's explanation describes it as null. The source locator lets a reader trace that normalized event back to the publisher's pinned record. None of these joins establishes an authenticated cloud audit chain or an operational security outcome.
+
+## Frontier run files
+
+The November run (Claude Sonnet 5.5 through Claude Code) is a separate, exploratory experiment. Its rows are not in the 996-row ledger, and its counts are never added to the October totals. See [frontier/README.md](frontier/README.md).
+
+| File | One row or entry is | Key fields |
+| --- | --- | --- |
+| `frontier/data/requests-splunk.jsonl` | One payload sent for T19: one view under one framing | `request_sha256` (SHA256 of `messages` serialized with sorted keys), `case_id`, `framing` (`explicit_rule` or `natural_question`), `view` (`request_only`, `volume_only`, `full_history`), `built_from_original`, `messages` (system and user content exactly as sent) |
+| `frontier/data/responses-splunk.jsonl` | One T19 call | `harness` (`claude_code`), `model`, `case_id`, `framing`, `view`, `repeat` (0 to 3), `request_sha256`, `status`, `stop_reason`, `text` (the response exactly as returned), and the scores `valid`, `correct`, `supported_correct`, `premature`, `flagged` |
+| `frontier/data/flags.jsonl` | One explanation matched by the pattern screen, in any history | `harness`, `model`, `case_id`, `framing`, `view`, `repeat`, `patterns` (pattern names only, no text) |
+| `frontier/data/aggregates.json` | Run summary | `modes`, `note`, `cells` (keyed `harness|model|framing|view`, each with `n` and the five score counts), `premature_repeats_by_history` (keyed `harness|model|framing|view|case_id`, repeats with a premature finding) |
+
+`volume_only` is the byte-only view. Under `natural_question`, the labels `data_returned`, `request_failed` and `cannot_determine` are mapped to the October clarified labels before scoring; `frontier/scripts/score.py` documents the mapping and the only text normalization applied. Each cell holds 80 calls: 20 histories × 4 repeats. A history is premature in a cell when at least one of its repeats is; the preregistered reading counts histories with at least three of four.
+
+`flagged` and `flags.jsonl` record a screen for wording that may assert a withheld value. They are not adjudicated findings; at candidate preparation, human adjudication remained pending.

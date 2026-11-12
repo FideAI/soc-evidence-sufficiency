@@ -1,0 +1,24 @@
+{
+  "scope": "Exploratory November frontier run (Claude Sonnet 5.5 through Claude Code). Checksums are integrity records, not release approval.",
+  "preregistration": {
+    "file": "PROTOCOL.md",
+    "sha256": "f72d6ecb6f3f26cb67d70e348cea858fa3de6cd817ecbee0b221adbf5487b1c2",
+    "note": "byte-identical to the version committed before the first call"
+  },
+  "files": {
+    "PROTOCOL.md": "f72d6ecb6f3f26cb67d70e348cea858fa3de6cd817ecbee0b221adbf5487b1c2",
+    "README.md": "d8d9cc10484d98272c26404afa686f7aa2d1cba824727e4e5a58bdf3c299195d",
+    "data/aggregates.json": "1b1e726c7961b16edfbc65895300630d46d290d52f36c2c9b42d8381337b3062",
+    "data/flags.jsonl": "26a2aa729d8dfdcc8d43482f1df8de69657c8d7f1043243281479625c232e028",
+    "data/requests-splunk.jsonl": "81e3391e62f89bb831221e1ca0a8b038343b7dcab0dbb53703a87a00908f146e",
+    "data/responses-splunk.jsonl": "aba1b324023daebff4600243a10b76e14b7339fc01ec84328f2f98146fc1481d",
+    "scripts/build_requests.py": "9df61bd0bb925e597f35b6c0adfef3f9f122ed573311e8e7268cf84bdc25ed26",
+    "scripts/capture_server.py": "83f68f3950c21daf68ffe8b0032ff9dc857ca080d4f62f042910858eaa05de52",
+    "scripts/check_frontier.py": "66e8f2de2e4d564f08f7dbbe96dff43344c5c7ad93b848c59ac9ef14da69bc3a",
+    "scripts/decoys.py": "2e3ea3d44a45526b1d212f67ab9196529f5eded21c4a78cd1fbce5b90424422e",
+    "scripts/run_calls.py": "89af20b7305cc3bf51c2c973d8187028581767287042805d79cce8cfa3c9e8a9",
+    "scripts/run_claude_code.py": "f6dc2509c755d09462bd566435eed6cdec0e430157ae007d9535bdf56dfc869a",
+    "scripts/score.py": "9dc3640568e48074ec48bd97dcedc582ca1e6420e1a602c541ee589587d85001",
+    "INTERPRETATION-NOTES.md": "1a95742483698bd983ca3f9681451fd4a1fe89c15b2fc9cafa11a4c83735dd21"
+  }
+}

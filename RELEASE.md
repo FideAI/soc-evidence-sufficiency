@@ -1,28 +1,28 @@
-# Release candidate 0.1.0-rc.1
+# Release 0.2.0 · November 12, 2026
 
-This version prepares a bounded research companion for review. The repository remains private and the website article unpublished until the owner approves release. Candidate status is intentional; a tag or passing CI does not imply peer review or methods acceptance.
+**Release version 0.2.0.** Fide’s owner reviewed the package and authorized its public release on November 12, 2026. The [v0.2.0 tag](https://github.com/FideAI/soc-evidence-sufficiency/tree/v0.2.0) identifies the source snapshot; the [GitHub release](https://github.com/FideAI/soc-evidence-sufficiency/releases/tag/v0.2.0) supplies the complete ZIP and SHA256. The report and citation date are November 12, 2026. The article and matching download are published separately on Fide’s website.
 
-## Contents and verification
+## Approved scope
 
-The release ZIP contains the complete standalone repository at the tag, without `.git`, private workspace history, local environments or excluded source archives. `SHA256SUMS` identifies the downloadable ZIP. `PACKAGE-PROVENANCE.json` independently records the 21 preserved study files and original companion archive fingerprint.
+The research perspective and supporting technical note cover the October local-model study (`study/`) and the exploratory November Sonnet run (`frontier/`). Their counts remain separate: 996 and 480 calls. The package includes 306 exact October Splunk responses and 24 exact November T19 responses, aggregate counts, frozen instructions and protocol, scoring scripts and source-verification instructions.
 
-From an extracted release directory, run the commands in [README.md](README.md). Python 3.11 and its standard library suffice. The source-verification command alone retrieves a pinned public file; the remaining study commands run offline.
+The 690 excluded October responses, non-T19 frontier raw responses, source archives, model weights, local environments, private review records and later defense experiments stay outside this release. Only this standalone repository is intended to become public. Fide’s internal cyber research and website source repositories remain private.
 
-A successful check establishes:
+Owner acceptance is not represented as independent peer review or as the protocol’s blinded, double-coded adjudication. The explanation-screen criterion is not reported as a replication pass or failure. No saved review judgment, protocol, score or model response has been changed to obtain release readiness.
 
-- Package integrity and valid local documentation links.
-- Arithmetic reconstruction of 996 categorical decisions, not 996 independent cases.
-- Rescoring of 306 preserved Splunk responses and reconstruction of their 306 input views from 24 source histories.
-- Ten semantic scoring boundaries and 24 included unavailable-field assertion examples.
+## Validation
 
-It does not reproduce fresh model inference, validate all 690 excluded responses from raw evidence, authenticate the original cloud service, or establish operational defense effectiveness.
+Run all commands in [README.md](README.md) from a clean extraction. Python 3.11 and its standard library suffice. The source-verification command alone downloads a pinned public file; the others run offline. The manifest and provenance records cover the preserved study package and separate frontier files. The website download carries `companion.sha256`.
 
-## Before public release
+These checks rescore retained responses and reconstruct published counts. They do not generate fresh model outputs. Source and inference scope are documented in the technical note, source notices and data dictionary.
 
-1. Record the owner's methods/editorial acceptance and approval of the limited export.
-2. Make only this dedicated study repository public; do not expose the internal research workspace.
-3. Publish the approved release and its checksum, updating candidate language to match the actual decision. Keep the candidate tag immutable; use a new version for subsequent changes.
-4. Check unauthenticated access to the README, manuscripts, evidence files and downloadable archive.
-5. Publish the website article separately after its links and production build are checked.
+## Coordinated release procedure
 
-The preserved package's candidate-status labels are provenance. They are not evidence of current repository visibility, and should not be rewritten merely to change a release label. The current top-level README and release record state the actual status.
+1. Merge the dedicated companion PR, preserving the pre-run protocol history, then tag the approved commit `v0.2.0` without moving earlier candidate tags.
+2. Build the 52-file source package from that commit and publish its ZIP and SHA256. Verify the website’s matching copy before deployment.
+3. Make **only `FideAI/soc-evidence-sufficiency`** public and publish the versioned release. Check the repository’s history and PR discussions as part of that visibility operation.
+4. Verify anonymous access to the README, version tag, evidence files and release download.
+5. Merge the website PR and deploy through the normal production workflow. Verify the article, date, discovery listings, technical note and downloads. Other publication holds remain in force.
+6. Record actual release URLs, commit IDs, checksums and deployment verification in the private release receipt. Use the version tag and release record to identify the approved source snapshot.
+
+The earlier `v0.1.0-rc.1` tag and draft release remain immutable historical candidates. The original preregistration, experimental dates and evidence-source dates are preserved.

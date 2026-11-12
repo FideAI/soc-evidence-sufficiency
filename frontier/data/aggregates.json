@@ -1,0 +1,65 @@
+{
+ "modes": [
+  "claude_code"
+ ],
+ "note": "flagged counts are pattern flags before human adjudication",
+ "cells": {
+  "claude_code|claude-sonnet-5-5|natural_question|request_only": {
+   "n": 80,
+   "valid": 80,
+   "correct": 80,
+   "supported_correct": 80,
+   "premature": 0,
+   "flagged": 21
+  },
+  "claude_code|claude-sonnet-5-5|explicit_rule|full_history": {
+   "n": 80,
+   "valid": 80,
+   "correct": 80,
+   "supported_correct": 80,
+   "premature": 0,
+   "flagged": 0
+  },
+  "claude_code|claude-sonnet-5-5|explicit_rule|volume_only": {
+   "n": 80,
+   "valid": 80,
+   "correct": 80,
+   "supported_correct": 80,
+   "premature": 0,
+   "flagged": 1
+  },
+  "claude_code|claude-sonnet-5-5|explicit_rule|request_only": {
+   "n": 80,
+   "valid": 80,
+   "correct": 80,
+   "supported_correct": 80,
+   "premature": 0,
+   "flagged": 0
+  },
+  "claude_code|claude-sonnet-5-5|natural_question|full_history": {
+   "n": 80,
+   "valid": 80,
+   "correct": 76,
+   "supported_correct": 62,
+   "premature": 0,
+   "flagged": 0
+  },
+  "claude_code|claude-sonnet-5-5|natural_question|volume_only": {
+   "n": 80,
+   "valid": 80,
+   "correct": 62,
+   "supported_correct": 62,
+   "premature": 18,
+   "flagged": 53
+  }
+ },
+ "premature_repeats_by_history": {
+  "claude_code|claude-sonnet-5-5|natural_question|volume_only|S3-02": 1,
+  "claude_code|claude-sonnet-5-5|natural_question|volume_only|S3-05": 4,
+  "claude_code|claude-sonnet-5-5|natural_question|volume_only|S3-22": 4,
+  "claude_code|claude-sonnet-5-5|natural_question|volume_only|S3-23": 1,
+  "claude_code|claude-sonnet-5-5|natural_question|volume_only|S3-35": 2,
+  "claude_code|claude-sonnet-5-5|natural_question|volume_only|T19": 2,
+  "claude_code|claude-sonnet-5-5|natural_question|volume_only|T25": 4
+ }
+}
