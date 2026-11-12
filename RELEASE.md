@@ -4,7 +4,7 @@ This candidate adds the exploratory November frontier run, Claude Sonnet 5.5 thr
 
 ## Contents and verification
 
-The release ZIP contains the complete standalone candidate from the reviewed working files, without `.git`, private workspace history, local environments or excluded source archives. `SHA256SUMS` identifies the downloadable ZIP. `PACKAGE-PROVENANCE.json` records the 21 current study files, their original hashes and the original companion archive fingerprint; `frontier/MANIFEST.json` records the frontier files.
+The release ZIP contains the complete standalone candidate from the reviewed working files, without `.git`, private workspace history, local environments or excluded source archives. The website download is paired with `companion.sha256`. Publish an equivalent checksum with any GitHub release. `PACKAGE-PROVENANCE.json` records the 21 current study files, their original hashes and the original companion archive fingerprint; `frontier/MANIFEST.json` records the frontier files.
 
 From an extracted release directory, run the commands in [README.md](README.md). Python 3.11 and its standard library suffice. The source-verification command alone retrieves a pinned public file; the remaining commands run offline.
 
@@ -21,7 +21,7 @@ It does not reproduce fresh model inference, validate the excluded October respo
 
 ## Before public release
 
-1. Have a person adjudicate the frontier run's 18 plain-question byte-only conclusions and its 75 screened explanations, and record the result.
+1. Complete the protocol’s blinded human review of all flagged explanations and a 20% random sample of unflagged incomplete-view explanations. Report agreement on the 20-explanation subset double-coded by two people. Also adjudicate the 18 plain-question byte-only conclusions; these review sets can overlap. Record the results before deciding the replication criterion.
 2. Record the owner's methods/editorial acceptance and approval of the limited export, including the frontier files.
 3. Make only this dedicated study repository public; do not expose the internal research workspace.
 4. Publish the approved release and its checksum, updating candidate language to match the actual decision. Keep candidate tags immutable; use a new version for subsequent changes.

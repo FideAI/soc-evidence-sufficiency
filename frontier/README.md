@@ -25,7 +25,7 @@ Claude Code adds text the planned API arms will not have: a billing line, one se
 
 - The 18 plain-question byte-only findings came from seven histories, all of them histories where the data had been returned. Three histories (S3-05, S3-22, T25) gave a finding in all four repeats.
 - The four complete-record misses are one mixed troubleshooting window, answered "cannot determine" each time.
-- The pattern screen flagged 75 explanations. A flag is a screen for wording that may assert a withheld value, not a finding. A person has not yet adjudicated the flags or the 18 byte-only explanations.
+- The pattern screen flagged 75 explanations. A flag is a screen for wording that may assert a withheld value, not a finding. Human review remains pending: the protocol requires blinded review of all flags, a 20% random sample of unflagged incomplete-view explanations, and agreement on a 20-explanation double-coded subset. The 18 definite byte-only explanations also need review; these sets can overlap.
 
 ## Check it
 

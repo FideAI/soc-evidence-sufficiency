@@ -156,4 +156,4 @@ The November run (Claude Sonnet 5.5 through Claude Code) is a separate, explorat
 
 `volume_only` is the byte-only view. Under `natural_question`, the labels `data_returned`, `request_failed` and `cannot_determine` are mapped to the October clarified labels before scoring; `frontier/scripts/score.py` documents the mapping and the only text normalization applied. Each cell holds 80 calls: 20 histories × 4 repeats. A history is premature in a cell when at least one of its repeats is; the preregistered reading counts histories with at least three of four.
 
-`flagged` and `flags.jsonl` record a screen for wording that may assert a withheld value. They are not adjudicated findings; at release, no person had yet adjudicated them.
+`flagged` and `flags.jsonl` record a screen for wording that may assert a withheld value. They are not adjudicated findings; at candidate preparation, human adjudication remained pending.

@@ -45,7 +45,7 @@ Because every history in this test ended in success, any incomplete-view answer 
 
 Under the clearer rules, Gemma's remaining errors cannot be blamed on the old label. In all 25 byte-only explanations, it described the withheld error field as `null`, including the T19 explanation quoted at the start. The identifiers it cited were real. Qwen made no premature finding under the clearer rules. Two qualifications limit the table. Gemma's improvement under the clearer rules cannot be separated from the removal of the ambiguous label. And the 24 Splunk byte-only inputs repeat one pattern, a single request logged in the same second, differing only in identifiers and byte count. They are not 25 independent confirmations.
 
-A small formatting check showed how unstable Gemma's behavior was. On six windows, we kept the instructions and values unchanged but sorted the JSON keys and added indentation, which also moved the target description after the records. All six of Gemma's byte-only answers changed from unsupported conclusions to correct abstentions, while exact repeats of the original format minutes earlier had changed nothing. Gemma could apply the rule; it applied it inconsistently across two presentations of the same facts. Spacing and field order changed together on six reused windows, so the result does not recommend indentation as a security control.
+A small formatting check showed how unstable Gemma's behavior was. On six windows, we kept the instructions and values unchanged but sorted the JSON keys and added indentation, which also moved the target description after the records. All six of Gemma's byte-only answers changed from unsupported conclusions to correct abstentions, while exact repeats of the original format minutes earlier had changed nothing. Gemma could apply the rule; it applied it inconsistently across two presentations of the same facts. Spacing and field order changed together on six reused windows. The calls also ran in sequence, so runtime or order effects could have contributed. This does not establish indentation as a security control.
 
 ## A frontier model kept the rule when we stated it
 
@@ -60,7 +60,7 @@ We used Claude Code, Anthropic's coding tool, with low reasoning effort and no t
 | Evidence rule stated | 80 of 80 | 0 of 80 | 0 of 80 |
 | Plain question | 76 of 80 | 0 of 80 | 18 of 80 |
 
-With the rule stated, Sonnet made no premature finding in 160 incomplete calls and answered all 80 complete records correctly. In its byte-only explanations it described the missing field as unknown or “not null” in 79 of 80, and never as empty. Asked the plain question, it declined in all 80 request-only calls. With byte counts added, it answered “data returned” in 18 of 80 calls, across seven histories, and in three of those histories it did so in all four attempts.
+With the rule stated, Sonnet made no premature finding in 160 incomplete calls and answered all 80 complete records correctly. A text check found the missing field described as unknown or “not null” in 79 of 80 byte-only explanations, with no description of it as empty. Asked the plain question, it declined in all 80 request-only calls. With byte counts added, it answered “data returned” in 18 of 80 calls, across seven histories, and in three of those histories it did so in all four attempts.
 
 All 18 of those answers matched what happened. Each came from a history where the data had in fact been returned, half of the 36 byte-only calls on such histories. On the eight failed reads and the three troubleshooting windows, Sonnet never claimed data had been returned. An evaluation that compared answers only with the complete record would have scored all 18 as correct.
 
@@ -72,7 +72,7 @@ One result runs the other way. Given the complete record and the plain question,
 
 The examples call for different judgments. Gemma's explanation supplied an unobserved field value. Qwen and Sonnet, given the stated rule, left the outcome unresolved. Asked a plain question, Sonnet sometimes inferred success while acknowledging the missing evidence. A fabricated observation and an inference from incomplete evidence should not receive the same diagnosis.
 
-The third behavior deserves a fair hearing. An experienced analyst might reach the same conclusion from 1,463 bytes. In one Ariel history, four reads each returned exactly as many bytes as the object held when it was stored, and Sonnet answered “data returned” every time. That is a reasonable bet. Our plain question did not state an evidence standard, so in asking it we left the standard to the model; “premature” is our rule applied to an answer that was never told the rule.
+Sonnet’s inference deserves a fair hearing. An experienced analyst might reach the same conclusion from 1,463 bytes. In one Ariel history, four reads each returned exactly as many bytes as the object held when it was stored, and Sonnet answered “data returned” every time. That is a reasonable bet. Our plain question did not state an evidence standard, so in asking it we left the standard to the model; “premature” is our rule applied to an answer that was never told the rule.
 
 The result raises a question about how findings might be used. Each of Sonnet's 18 definite byte-only answers had a categorical finding, `data_returned`, and an explanation carrying the qualification. If a ticket, dashboard or downstream agent copied only the finding, that qualification could be lost. We did not test such a handoff. In this set every one of those inferences matched the outcome. We still need to understand why Sonnet declined on every failed read, and whether it would infer success from an error response that resembled returned data.
 
@@ -94,7 +94,7 @@ In the wider investigation process, [ALERT-BENCH and AIDA](https://arxiv.org/htm
 
 ## What we still need to learn
 
-The first gap is review. A person needs to adjudicate Sonnet's 18 byte-only conclusions and its 75 screened explanations before we can say firmly that it never asserted a withheld value.
+The first gap is human review. The protocol requires blinded review of the flagged explanations and a random sample the screen did not flag, with a second reader checking a subset. Sonnet’s 18 definite byte-only conclusions also need that scrutiny. Until then, our reading of its explanations remains provisional.
 
 The second is the test we preregistered. It sends the same requests through the API to Claude Opus 5.5 as the primary model, with Sonnet 5.5 and Haiku 5.5 alongside, without Claude Code's additions. It would show whether the plain-question behavior appears in Anthropic's most capable current model. Because we have now seen Sonnet's results, a Sonnet API result would be a repeat on a different route, not a blind test; Opus and Haiku remain unseen.
 

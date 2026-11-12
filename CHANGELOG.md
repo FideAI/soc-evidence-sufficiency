@@ -15,6 +15,8 @@ The frontier run is exploratory: Claude Code adds its own text to each request, 
 
 The November 12 interpretation pass distinguishes an asserted unseen field value from a disclosed inference, makes downstream caveat loss explicitly hypothetical, and simplifies the article subtitle and harness explanation. The technical note aligns; frozen evidence, scores and protocol are unchanged.
 
+The final review restores the sequential-formatting caveat, marks the explanation text check as provisional, specifies the complete preregistered human-review gate, and corrects the checksum handoff instructions. No protocol, source evidence or numerical results changed.
+
 ## 0.1.0-rc.2 — updated 2026-11-11 (prepared, not released)
 
 Reframes the Insights article as a research perspective, retains the full empirical account in a supporting technical note, and adds concrete collaboration routes and falsifiable follow-up questions. Updates companion guidance, manifests and version metadata. Experimental inputs, responses, labels, scoring, source selection and all 996 evaluated results are unchanged. The rc.1 tag and its uploaded release assets remain immutable. No new inference, public release or independent human acceptance is claimed.
