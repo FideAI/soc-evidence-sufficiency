@@ -64,7 +64,11 @@ With the rule stated, Sonnet made no premature finding in 160 incomplete calls a
 
 All 18 of those answers matched what happened. Each came from a history where the data had in fact been returned, half of the 36 byte-only calls on such histories. On the eight failed reads and the three troubleshooting windows, Sonnet never claimed data had been returned. An evaluation that compared answers only with the complete record would have scored all 18 as correct.
 
-Our reading of the 18 explanations is that each acknowledged the withheld error fields and inferred success from the byte count. We found no assertion that the missing field was empty. A human reviewer still needs to adjudicate that interpretation. Our automated screen also flagged 75 explanations, mostly for the word “success” inside sentences such as “success cannot be confirmed.” These are screening flags, not confirmed errors, and they await review too.
+Our reading of the 18 explanations is that each acknowledged the withheld error fields and inferred read success from the byte count. We found no literal claim that the missing error field was null. That is a narrower observation than saying the explanations contained no unsupported assertions.
+
+A closer review flagged three responses from two histories that qualified the read outcome while describing an earlier write as successful. The write’s outcome fields had also been withheld, so the supplied records did not establish that claim. Two responses gave a definite read finding; the third correctly left the read unresolved. A model can qualify the answer it was asked for and still overstate a supporting fact. Whether that write wording counts as an implicit assertion of a withheld outcome, rather than a loosely expressed inference, remains for human adjudication.
+
+Our automated screen flagged 75 explanations, mostly for the word “success” inside sentences such as “success cannot be confirmed.” These are screening flags, not confirmed errors. The review concerns above illustrate why checking individual claims matters even when a sentence elsewhere acknowledges uncertainty.
 
 One result runs the other way. Given the complete record and the plain question, Sonnet answered “cannot determine” in all four attempts on the window containing a denied read followed by a successful one. The record supported a definite answer. It was the only place in the run where Sonnet was more cautious than the evidence required.
 
@@ -72,7 +76,7 @@ One result runs the other way. Given the complete record and the plain question,
 
 The examples call for different judgments. Gemma's explanation supplied an unobserved field value. Qwen and Sonnet, given the stated rule, left the outcome unresolved. Asked a plain question, Sonnet sometimes inferred success while acknowledging the missing evidence. A fabricated observation and an inference from incomplete evidence should not receive the same diagnosis.
 
-Sonnet’s inference deserves a fair hearing. An experienced analyst might reach the same conclusion from 1,463 bytes. In one Ariel history, four reads each returned exactly as many bytes as the object held when it was stored, and Sonnet answered “data returned” every time. That is a reasonable bet. Our plain question did not state an evidence standard, so in asking it we left the standard to the model; “premature” is our rule applied to an answer that was never told the rule.
+Sonnet’s inference deserves a fair hearing. An experienced analyst might reach the same conclusion from 1,463 bytes. In one Ariel history, four reads each had an outbound byte count matching the inbound count in an earlier write request, and Sonnet answered “data returned” every time. Matching counts are circumstantial support, but do not by themselves establish successful storage, stored object size or complete delivery. Our plain question did not state an evidence standard, so “premature” is our rule applied to an answer that was never told the rule.
 
 The result raises a question about how findings might be used. Each of Sonnet's 18 definite byte-only answers had a categorical finding, `data_returned`, and an explanation carrying the qualification. If a ticket, dashboard or downstream agent copied only the finding, that qualification could be lost. We did not test such a handoff. In this set every one of those inferences matched the outcome. We still need to understand why Sonnet declined on every failed read, and whether it would infer success from an error response that resembled returned data.
 
@@ -110,7 +114,7 @@ The most useful thing we can share is the evidence itself. The [companion's shor
 
 We also welcome replications on other systems, independently collected cases with clear evidence boundaries, and comparisons of review methods that count justified findings lost as well as unsupported findings caught. For a correction or a proposed collaboration, write to [research@fideai.org](mailto:research@fideai.org?subject=AI%20investigation%20evidence%20collaboration). Please do not send confidential logs or credentials.
 
-All three models cited a real record for T19, and each citation gave us a place to look. Looking exposed the difference between claiming to see a missing value, declining to decide, and drawing an inference with a stated caveat. Fide's contribution is to make those differences inspectable in a controlled security task. An evaluation of AI investigators should be able to tell these answers apart, even when the definite answers happen to be right.
+All three models cited a real record for T19, and each citation gave us a place to look. Looking exposed the difference between claiming to see a missing value, declining to decide, and drawing an inference with a stated caveat. The disputed write claims add another reason to check the explanation: a qualified answer can still rest on an overstated supporting fact. Fide's contribution is to make these distinctions inspectable in a controlled security task, even when the final answer happens to be right.
 
 ---
 

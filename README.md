@@ -86,3 +86,7 @@ Citation metadata is available in [CITATION.cff](CITATION.cff). Suggested citati
 > Fide AI. (2026). *What AI investigators do with evidence they don't have: research companion* (0.2.0-rc.1, release candidate). https://github.com/FideAI/soc-evidence-sufficiency
 
 Include the exact commit if you use a modified or untagged checkout. No DOI or peer-review status is claimed. Research by [Fide AI](https://fideai.org).
+
+## Supporting claims need their own check
+
+A follow-up close reading found three responses from two histories that qualified the read outcome while overstating a preceding write. No literal null error-field value was supplied, but that is not a blanket finding that the explanations contain no unsupported assertions. The distinction, response locators and pending human adjudication are documented in [the interpretation note](frontier/INTERPRETATION-NOTES.md). Frozen evidence and numerical results are unchanged.

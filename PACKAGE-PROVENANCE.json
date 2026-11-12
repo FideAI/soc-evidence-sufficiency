@@ -3,7 +3,7 @@
   "source_archive_sha256": "58bbd40dee634d551b2dea2e9e2cffee69a4d6585aff7b2167aa73d6a3d74cfd",
   "files": {
     "LICENSE": "af5fb91f5d45f391937e1f16b80c7918d22e4031bd27631d93bbd7339ced954d",
-    "MANIFEST.json": "24621f4258e912bc24437d99d57f41e8fffeef0fa221eec0b94cfc43fc7fc6e3",
+    "MANIFEST.json": "70cbc8f51a03bbcfa21f20ed08ad55e8beb3d6bfd20c48a0685fadfc0599470d",
     "MODEL-REPRODUCTION.md": "fbefa14b5c1df281c608a11906518fa467874c44771d5d91120e55aad67ad04c",
     "README.md": "de196f37dcdd738db8649ec858af16a23238bf6e8fb77fdbf1f956e5f89b8921",
     "THIRD-PARTY-NOTICES.md": "102bbf905441941f566d3107b5cd6ea5c8d116412c0b6d9a1d936967699b303d",
@@ -17,8 +17,8 @@
     "model-metadata/gemma4-local-params.json": "56380ca2ab89f1f68c283f4d50863c0bcab52ae3f1b9a88e4ab5617b176f71a3",
     "model-metadata/qwen3.8-local-manifest.json": "22130167c4c20e20c7b71454612966ca8e8171e9b3cc8ab6ce8aa6cbfec79643",
     "model-metadata/qwen3.8-local-params.json": "906ee87bde6cff7bf3c3b1550f55cbbec261e027187fbb9f511f908ffc418334",
-    "publication/INSIGHT.md": "95721171dce81dea8ef2f1236a85cd205b7a706b81e247ac1536f0f016ce50a5",
-    "publication/TECHNICAL-PAPER.md": "698c30460d7fbd6985f427fa7c0329d79bfceb3097de946ba7a6e6c70f58931c",
+    "publication/INSIGHT.md": "3250f3bdae71fea435613005892b781a09f1f93f276806154d90c772a624a7cd",
+    "publication/TECHNICAL-PAPER.md": "fe71bd3b2d56c91318a33116db3f391b2c9721aa852145aef25435025ab95eee",
     "scripts/audit_evidence.py": "81f78031de796679d4a331573589c3e79d6af54dbd3d2a54735caaaea19d1c92",
     "scripts/check_source.py": "4ddadc3d6a1897105da513400c1ca9b04b3d61378fb510e25ce55a9bbe62a76b",
     "scripts/reproduce.py": "9c905972f9c9426e7cf716d39992ee5e34332cf3a6535be4007274cbf710afe8",
@@ -60,8 +60,8 @@
   },
   "frontier": {
     "directory": "frontier/",
-    "manifest_sha256": "8fa1960dea43db1e2d085b4d29fe0aa5110c8e7a1167e19d35e6d59ea8d8b04d",
-    "files": 13,
+    "manifest_sha256": "5f50f04c925a63dee9d16c21e805927f59a392e286999b0081ab3940c2a80af2",
+    "files": 14,
     "scope": "Separate exploratory experiment outside the preserved study package; not part of the 996-row ledger."
   }
 }

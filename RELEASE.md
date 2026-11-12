@@ -22,7 +22,7 @@ It does not reproduce fresh model inference, validate the excluded October respo
 ## Before public release
 
 1. Complete the protocol’s blinded human review of all flagged explanations and a 20% random sample of unflagged incomplete-view explanations. Report agreement on the 20-explanation subset double-coded by two people. Also adjudicate the 18 plain-question byte-only conclusions; these review sets can overlap. Record the results before deciding the replication criterion.
-2. Record the owner's methods/editorial acceptance and approval of the limited export, including the frontier files.
+2. Resolve the ancillary-write interpretation concerns in `frontier/INTERPRETATION-NOTES.md` within that human review; the separate AI check and assistant close reading do not satisfy it. Record the owner's methods/editorial acceptance and approval of the limited export, including the frontier files.
 3. Make only this dedicated study repository public; do not expose the internal research workspace.
 4. Publish the approved release and its checksum, updating candidate language to match the actual decision. Keep candidate tags immutable; use a new version for subsequent changes.
 5. Check unauthenticated access to the README, manuscripts, evidence files and downloadable archive.

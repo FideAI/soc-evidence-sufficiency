@@ -7,7 +7,7 @@
   },
   "files": {
     "PROTOCOL.md": "f72d6ecb6f3f26cb67d70e348cea858fa3de6cd817ecbee0b221adbf5487b1c2",
-    "README.md": "8e7c2269d3f9cf174ae19b932facce216414f1fe7724974556e068a920d2e9b2",
+    "README.md": "d8d9cc10484d98272c26404afa686f7aa2d1cba824727e4e5a58bdf3c299195d",
     "data/aggregates.json": "1b1e726c7961b16edfbc65895300630d46d290d52f36c2c9b42d8381337b3062",
     "data/flags.jsonl": "26a2aa729d8dfdcc8d43482f1df8de69657c8d7f1043243281479625c232e028",
     "data/requests-splunk.jsonl": "81e3391e62f89bb831221e1ca0a8b038343b7dcab0dbb53703a87a00908f146e",
@@ -18,6 +18,7 @@
     "scripts/decoys.py": "2e3ea3d44a45526b1d212f67ab9196529f5eded21c4a78cd1fbce5b90424422e",
     "scripts/run_calls.py": "89af20b7305cc3bf51c2c973d8187028581767287042805d79cce8cfa3c9e8a9",
     "scripts/run_claude_code.py": "f6dc2509c755d09462bd566435eed6cdec0e430157ae007d9535bdf56dfc869a",
-    "scripts/score.py": "9dc3640568e48074ec48bd97dcedc582ca1e6420e1a602c541ee589587d85001"
+    "scripts/score.py": "9dc3640568e48074ec48bd97dcedc582ca1e6420e1a602c541ee589587d85001",
+    "INTERPRETATION-NOTES.md": "e3405a62acd90ab82e158527d45a540602aab22992d1053ed996ee8a27bef6bb"
   }
 }

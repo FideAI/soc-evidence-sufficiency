@@ -57,3 +57,7 @@ python3 frontier/scripts/decoys.py
 Only T19 ships with response text and inputs. The other 19 histories come from Ariel, OTRF and blog-transcript material whose redistribution terms are unresolved, so they appear as counts and pattern names only. The payload builder and runners therefore document the method; they cannot be rerun from this repository alone.
 
 Licensing follows [LICENSING.md](../LICENSING.md). Field definitions are in [DATA-DICTIONARY.md](../DATA-DICTIONARY.md#frontier-run-files).
+
+## Supporting claims need their own check
+
+A follow-up close reading found three responses from two histories that qualified the read outcome while overstating a preceding write. No literal null error-field value was supplied, but that is not a blanket finding that the explanations contain no unsupported assertions. The distinction, response locators and pending human adjudication are documented in [the interpretation note](INTERPRETATION-NOTES.md). Frozen evidence and numerical results are unchanged.

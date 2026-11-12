@@ -17,6 +17,8 @@ The November 12 interpretation pass distinguishes an asserted unseen field value
 
 The final review restores the sequential-formatting caveat, marks the explanation text check as provisional, specifies the complete preregistered human-review gate, and corrects the checksum handoff instructions. No protocol, source evidence or numerical results changed.
 
+The disputed-case review narrows the no-literal-null observation and documents three ancillary-write overstatements from two histories in a separate interpretation note. Human codebook adjudication remains pending. Frozen evidence, scores, screen flags and saved AI judgments are unchanged; excluded raw response text is not redistributed.
+
 ## 0.1.0-rc.2 — updated 2026-11-11 (prepared, not released)
 
 Reframes the Insights article as a research perspective, retains the full empirical account in a supporting technical note, and adds concrete collaboration routes and falsifiable follow-up questions. Updates companion guidance, manifests and version metadata. Experimental inputs, responses, labels, scoring, source selection and all 996 evaluated results are unchanged. The rc.1 tag and its uploaded release assets remain immutable. No new inference, public release or independent human acceptance is claimed.
