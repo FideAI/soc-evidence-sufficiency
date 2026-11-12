@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0-rc.1 — 2026-11-12 (prepared, not released)
+
+Adds an exploratory frontier run in a new `frontier/` folder and revises the Insights article to report it.
+
+- `frontier/PROTOCOL.md`: the preregistration, byte-identical to the version committed before the first call.
+- `frontier/data/`: per-cell and per-history counts for 480 calls to Claude Sonnet 5.5 through Claude Code (20 histories, three views, two framings, four repeats), the pattern-screen list without text, and the exact inputs and responses for Splunk history T19 (24 responses). Responses for the other 19 histories are not included because their source material has no cleared redistribution rights.
+- `frontier/scripts/`: the frozen scorer and pattern screen (only its path to the October scorer changed), the scorer decoys, the payload builder, the Claude Code runner, the local capture server, the planned API caller, and a new offline check, `check_frontier.py`, which rescores the T19 responses and checks the published counts.
+- `study/publication/INSIGHT.md`: rewritten as "What AI investigators do with evidence they don't have", leading with the T19 record and the four answers it received, and adding the frontier results and their limits. October counts, quotations and the table are unchanged; the technical note is unchanged and still covers October only. `study/MANIFEST.json` was refreshed.
+- Repository README, data dictionary, licensing map, citation metadata, CI and the release verifier now cover `frontier/`.
+
+The frontier run is exploratory: Claude Code adds its own text to each request, and no result is pooled with the October study or with the preregistered API arms, which have not been run. The pattern screen and the 18 plain-question byte-only conclusions await human adjudication. October experimental data, labels, scoring and the 996-row ledger are unchanged. No public release or independent human acceptance is claimed.
+
 ## 0.1.0-rc.2 — updated 2026-11-11 (prepared, not released)
 
 Reframes the Insights article as a research perspective, retains the full empirical account in a supporting technical note, and adds concrete collaboration routes and falsifiable follow-up questions. Updates companion guidance, manifests and version metadata. Experimental inputs, responses, labels, scoring, source selection and all 996 evaluated results are unchanged. The rc.1 tag and its uploaded release assets remain immutable. No new inference, public release or independent human acceptance is claimed.

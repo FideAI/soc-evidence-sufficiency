@@ -21,6 +21,8 @@ jobs:
       - run: python study/scripts/test_semantics.py
       - run: python study/scripts/audit_evidence.py
       - run: python scripts/audit_interpretation.py
+      - run: python frontier/scripts/check_frontier.py
+      - run: python frontier/scripts/decoys.py
   pinned-source:
     runs-on: ubuntu-latest
     timeout-minutes: 5
